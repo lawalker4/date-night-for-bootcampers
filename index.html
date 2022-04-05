@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+      <title>Demo</title>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/css/foundation.min.css">
+      <link href="https://fonts.googleapis.com/css?family=Poppins:900" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="Assets/CSS/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
+
+  </head>
+  <body>
+    <div class="container"> 
+      <div class="col">
+        <div class="row">
+            <div class="row info-input">  
+              <div class="medium-6 cell col">
+                <input id="user-zipcode" type="text" class="validate address-form" placeholder="Zipcode" required>
+              </div>
+              <div class="medium-6 cell col">
+                <input id="user-radius" type="number" min="1" max="25" value="15" class="validate address-form" placeholder="Radius in Miles" required>
+              </div>
+              <div class="col">
+              <a class="button" id="submit-button">submit</a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div> 
+
+      <div class="modal" id="restaurant-display">
+        <div class="modal-content">
+          <button class="close-button" aria-label="Close alert" type="button" data-close>
+            <span id="close">&times;</span>
+          </button>
+          <ul class="modal-list col-md-6">
+            <h3 id="restaurant-name"></h3>
+            <li class="restaurant-information"> Address: <span id="address"> </span> </li> 
+            <li class="restaurant-information"> Distance: <span id="distance"></span></li>
+            <li class="restaurant-information"> Price Range ($-$$$$): <span id="price-range"></span></li>
+            <li class="restaurant-information"> Star Rating: <span id="star-rating"></span></li>
+            <li class="restaurant-information"> Phone #: <span id="phone-number"></span></li>
+            <li id="website"><a id="add-website" >Website</a></li>
+            <img id="website-image" src=""/>
+            </ul>
+            <div class="center" id="map"></div>
+          </div>
+          <ul class="modal-list col-md-6">
+            <h3 id="event-name"></h3>
+            <li class=""> Info: <span id=""></span></li>
+          </ul> 
+            
+        </div>
+      </div>
+
+    </div>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=&libraries=places" type="text/javascript"></script>
+  <script src="	https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js" ></script>
+  <script src="Assets/Javascript/yelp.js"></script>
+  <script src="Assets/Javascript/google_maps.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
+
+</body>
+</html>
