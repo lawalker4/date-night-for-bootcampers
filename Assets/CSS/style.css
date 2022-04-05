@@ -1,0 +1,69 @@
+
+body { 
+  font-family: "Times New Roman", Times, serif;
+  color: black;
+
+}
+
+#submit-button { 
+  float: left; 
+  margin-left: 20px; 
+  margin-top: 15px; 
+  border-radius: 25px;
+
+  
+}
+
+form { 
+background-color: #ffff; 
+border-radius: 25px; 
+margin-top: 50px;
+margin-left: 50px;
+
+}
+
+
+.modal {
+  display: block; 
+  margin-top: 125px;
+  position: fixed; 
+  z-index: -99999;
+  padding-top: 0px; 
+  left: 0;
+  opacity: 0;
+  top: 0;
+  width: 80%;
+  height: 80%;
+  overflow: auto; 
+  background-color: #fefefe;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  width: 100%;
+}
+
+.modal-list li{
+    font-size: 25px;
+    color: black;
+    padding-top: 25px;
+}
+
+.modal-list img{
+  padding-top: 30px;
+}
+
+#restaurant-name {
+    font-size: 40px;
+    color: darkblue;
+    text-align: center;
+    border-bottom: 1px solid #0000001c;
+    padding-bottom: 3%;
+}
+
+#map{
+  height:400px;
+  width: 100%;
+}
+
