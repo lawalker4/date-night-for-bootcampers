@@ -10,8 +10,6 @@ body {
   margin-left: 20px; 
   margin-top: 15px; 
   border-radius: 25px;
-
-  
 }
 
 form { 
@@ -19,7 +17,6 @@ background-color: #ffff;
 border-radius: 25px; 
 margin-top: 50px;
 margin-left: 50px;
-
 }
 
 
@@ -48,18 +45,24 @@ margin-left: 50px;
     font-size: 25px;
     color: black;
     padding-top: 25px;
+    font-weight: bold;
+}
+
+.modal-list li span{
+  font-weight: 300;
 }
 
 .modal-list img{
   padding-top: 30px;
 }
 
-#restaurant-name {
-    font-size: 40px;
+.modal-list h3 {
+    font-size: 36px;
     color: darkblue;
     text-align: center;
     border-bottom: 1px solid #0000001c;
     padding-bottom: 3%;
+    padding-top: 15px;
 }
 
 #map{

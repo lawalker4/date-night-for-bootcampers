@@ -33,28 +33,37 @@
           <button class="close-button" aria-label="Close alert" type="button" data-close>
             <span id="close">&times;</span>
           </button>
-          <ul class="modal-list col-md-6">
-            <h3 id="restaurant-name"></h3>
-            <li class="restaurant-information"> Address: <span id="address"> </span> </li> 
-            <li class="restaurant-information"> Distance: <span id="distance"></span></li>
-            <li class="restaurant-information"> Price Range ($-$$$$): <span id="price-range"></span></li>
-            <li class="restaurant-information"> Star Rating: <span id="star-rating"></span></li>
-            <li class="restaurant-information"> Phone #: <span id="phone-number"></span></li>
-            <li id="website"><a id="add-website" >Website</a></li>
-            <img id="website-image" src=""/>
-            </ul>
-            <div class="center" id="map"></div>
+          <div class = "row">
+            <ul class="modal-list small-6 medium-4 large-3 columns">
+              <h3 id="restaurant-name"></h3>
+              <li class="modal-information"> Address: <span id="restaurant-address"> </span> </li> 
+              <li class="modal-information"> Distance: <span id="restaurant-distance"></span></li>
+              <li class="modal-information"> Price Range ($-$$$$): <span id="restaurant-price-range"></span></li>
+              <li class="modal-information"> Star Rating: <span id="restaurant-star-rating"></span></li>
+              <li class="modal-information"> Review Count: <span id="restaurant-review-count"></span></li>
+              <li class="modal-information"> Phone #: <span id="restaurant-phone-number"></span></li>
+              <li id="restaurant-website"><a id="restaurant-add-website" >Yelp Link</a></li>
+              <img id="restaurant-website-image" src=""/>
+              </ul>
+              <div class="center" id="map"></div>
+            </div>
+            <ul class="modal-list small-6 medium-4 large-3 columns">
+              <h3 id="event-name"></h3>
+              <li class="modal-information"> Address: <span id="event-address"></span></li>
+              <li class="modal-information"> Distance From Restaurant: <span id="event-distance"></span></li>
+              <li class="modal-information"> Cost: <span id="event-cost"></span></li>
+              <li class="modal-information"> <b>From </b> <span id="event-start-time"></span> <b> Until </b>  <span id="event-end-time"></span></li> 
+              <li class="modal-information"><a id="event-add-website"> Yelp Link </a></li>
+              <li class="modal-information"><a id="event-reserve"> Reserve </a></li>
+              <img id="event-website-image" src=""/>
+
+            </ul> 
           </div>
-          <ul class="modal-list col-md-6">
-            <h3 id="event-name"></h3>
-            <li class=""> Info: <span id=""></span></li>
-          </ul> 
-            
         </div>
       </div>
 
     </div>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js" ></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=&libraries=places" type="text/javascript"></script>
   <script src="	https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js" ></script>
   <script src="Assets/Javascript/yelp.js"></script>
