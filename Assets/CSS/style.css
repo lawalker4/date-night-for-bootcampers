@@ -5,20 +5,52 @@ body {
 
 }
 
+header h1{
+  font-size: 34px;
+  margin-top: 25px;
+  margin-left: 25px;
+}
+
 #submit-button { 
   float: left; 
   margin-left: 20px; 
-  margin-top: 15px; 
-  border-radius: 25px;
+  border-radius: 35px;
+  font-size: 16px;
 }
 
-form { 
-background-color: #ffff; 
-border-radius: 25px; 
-margin-top: 50px;
-margin-left: 50px;
+.grid-container{
+  background-color: #ffff; 
+  flex:1;
+}
+.grid-container h3{
+  font-size: 28px;
+  margin-top: -76vh;
 }
 
+#grid_x_input{
+  margin-top: 30vh;
+}
+
+.grid-container label{
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.storage-column{
+  margin-top: 30vh;
+  padding-left:10%;
+  padding-right:10%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.storage-row{
+  text-align: center;
+  height: 30vh;
+
+  background-color:blue;
+}
 
 .modal {
   display: block; 
@@ -29,16 +61,20 @@ margin-left: 50px;
   left: 0;
   opacity: 0;
   top: 0;
-  width: 80%;
-  height: 80%;
+  width: 100%;
+  height: auto;
   overflow: auto; 
-  background-color: #fefefe;
+  background-color: white;
 }
 
 .modal-content {
-  background-color: #fefefe;
+  background-color: white;
   margin: auto;
   width: 100%;
+}
+
+.modal-list {
+  padding-right: 25px;
 }
 
 .modal-list li{
@@ -54,19 +90,41 @@ margin-left: 50px;
 
 .modal-list img{
   padding-top: 30px;
+  padding-bottom: 30px;
+  width:100%;
+  height:auto;
+}
+
+.close {
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+}
+.close:hover,
+.close:focus {
+  cursor:pointer;
 }
 
 .modal-list h3 {
     font-size: 36px;
     color: darkblue;
     text-align: center;
-    border-bottom: 1px solid #0000001c;
+    border-bottom: 1px solid black;
     padding-bottom: 3%;
     padding-top: 15px;
 }
 
-#map{
-  height:400px;
-  width: 100%;
+.modal-list h2 {
+  font-size: 26;
+  text-align: center;
+  font-weight: bold;
+  border-style: 1px solid black;
+}
+
+.center{
+  padding-top: 25px;
+  padding-bottom: 10px;
+  height:350px;
+  width: auto;
 }
 
