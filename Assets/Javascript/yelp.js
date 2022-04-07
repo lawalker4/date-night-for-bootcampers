@@ -10,7 +10,7 @@ $("#submit-button").on("click", function() {
   // convert miles to meters
   var radius = Math.floor(radius*1609.344)
   // CORS headers are added to the proxied request via "https://cors-anywhere.herokuapp.com". However, cors-anywhere has been downgraded 
-  // to a demo status so a working proxy alternative would ideal. 
+  // to a demo status so a working proxy alternative would be ideal. 
   var proxy = 'https://cors-anywhere.herokuapp.com/'
   var queryUrl =  proxy + 'https://api.yelp.com/v3/businesses/search?location=' + zipCode +
   '&term=restaurants&radius=' + radius + '&limit=30' ;
@@ -62,13 +62,16 @@ $("#submit-button").on("click", function() {
         //wait for api responses 
         $(modal).css("opacity",1)
         $(modal).css("z-index",1)
+        //hide empty html content if missing api data. 
+        $('.modal-list li:has(span:empty,src:empty,href:empty,a:empty)').remove(); 
+        $('li:empty').remove();
        }, 4000);
    
    });
 
 span.onclick = function() {
   //hide modal when clicking on "x" or "&times;"
-  modal.style.display = "none";
+  clear_event_data();
   $(modal).css("opacity",0)
   $(modal).css("z-index",-99999)
 }
@@ -87,7 +90,6 @@ var event_function = function(restaurant_latitude,restaurant_longitude){
     headers: {
         Authorization : 'Bearer H-CmHNyS5hde4Z8buw7yFhEtIWK_QR-ZU16VVjN-20CJmO4drUhuDbHrgfeWoeh64Vr9H1_YaZaELPtp-XIHTKGdmXgb2svuUSOgw-aJGsTjj570SlR52YWAtJRMYnYx'
     },
-    //error: return_empty()
 }).then(function(response) {
   var events = response.events 
   var random_num = Math.floor(Math.random() * events.length);
@@ -116,6 +118,9 @@ var event_function = function(restaurant_latitude,restaurant_longitude){
   $('<h2>Event</h2>').insertBefore("#event-map");
   $('<h3 id="event-name"></h3>').insertBefore("#event-map");
   $("#event-name").html(response_array.name);
+  $('<li class="modal-information"> Categories: <span id="event-category"></span></li>').insertBefore("#event-map");
+  var event_categories = response_array.category.replace(/-/g,' ');
+  $("#event-category").html(event_categories)
   $('<li class="modal-information"> Address: <span id="event-address"></span></li>').insertBefore("#event-map");
   $("#event-address").html(event_address);
   $('<li class="modal-information"> Distance From Restaurant: <span id="event-distance"></span></li>').insertBefore("#event-map");
@@ -141,10 +146,6 @@ var event_function = function(restaurant_latitude,restaurant_longitude){
   $('<li class="modal-information"> Description: <span id="event-description"></span></li>').insertBefore("#event-map")
   $("#event-description").html(response_array.description)}
 
-  //hide empty html content if missing api data. 
-  $('.modal-list li:has(span:empty,src:empty,href:empty,a:empty)').remove(); 
-  $('li:empty').remove();
-
   console.log(event_distance)
 
 })}
@@ -163,8 +164,6 @@ function distance(lat1, lon1, lat2, lon2) {
   return dist
 }
 
-function return_empty(){
-  //console.log("no event response")
-  //$("#event_column").append('<h3 id="event-name"></h3>')
-  //$("#event-name").html("No Events Found Nearby");
+function clear_event_data(){
+  $('#event_column').children().not("#event-map").remove();
 }

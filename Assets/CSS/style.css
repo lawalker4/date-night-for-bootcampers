@@ -7,8 +7,8 @@ body {
 
 header h1{
   font-size: 34px;
-  margin-top: 25px;
-  margin-left: 25px;
+  margin-top: 3vh;
+  margin-left: 5vw;
 }
 
 #submit-button { 
@@ -19,7 +19,7 @@ header h1{
 }
 
 .grid-container{
-  background-color: #ffff; 
+  background-color: white; 
   flex:1;
 }
 .grid-container h3{
@@ -39,7 +39,7 @@ header h1{
 
 .storage-column{
   margin-top: 30vh;
-  padding-left:10%;
+  padding-left:5%;
   padding-right:10%;
   display: block;
   margin-left: auto;
@@ -48,8 +48,7 @@ header h1{
 .storage-row{
   text-align: center;
   height: 30vh;
-
-  background-color:blue;
+  background-color:darkblue;
 }
 
 .modal {
@@ -61,7 +60,7 @@ header h1{
   left: 0;
   opacity: 0;
   top: 0;
-  width: 100%;
+  width: 70%;
   height: auto;
   overflow: auto; 
   background-color: white;
@@ -126,5 +125,15 @@ header h1{
   padding-bottom: 10px;
   height:350px;
   width: auto;
+}
+
+.modal::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 15px rgb(0, 44, 11);
+  box-shadow: black;
+}
+.modal::-webkit-scrollbar
+{
+  width: 15px;
 }
 
