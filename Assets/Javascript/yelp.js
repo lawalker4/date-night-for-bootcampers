@@ -71,6 +71,7 @@ $("#submit-button").on("click", function() {
 
 span.onclick = function() {
   //hide modal when clicking on "x" or "&times;"
+  save_data();
   clear_event_data();
   $(modal).css("opacity",0)
   $(modal).css("z-index",-99999)
@@ -167,3 +168,11 @@ function distance(lat1, lon1, lat2, lon2) {
 function clear_event_data(){
   $('#event_column').children().not("#event-map").remove();
 }
+
+function save_data(){
+  //save modal data to local storage
+}
+
+$(function(){
+  //load search history on page load from local storage 
+})
