@@ -5,23 +5,51 @@ body {
 
 }
 
+header h1{
+  font-size: 34px;
+  margin-top: 3vh;
+  margin-left: 5vw;
+}
+
 #submit-button { 
   float: left; 
   margin-left: 20px; 
-  margin-top: 15px; 
-  border-radius: 25px;
-
-  
+  border-radius: 35px;
+  font-size: 16px;
 }
 
-form { 
-background-color: #ffff; 
-border-radius: 25px; 
-margin-top: 50px;
-margin-left: 50px;
-
+.grid-container{
+  background-color: white; 
+  flex:1;
+}
+.grid-container h3{
+  font-size: 28px;
+  margin-top: -76vh;
 }
 
+#grid_x_input{
+  margin-top: 30vh;
+}
+
+.grid-container label{
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.storage-column{
+  margin-top: 30vh;
+  padding-left:5%;
+  padding-right:10%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.storage-row{
+  text-align: center;
+  height: 30vh;
+  background-color:darkblue;
+}
 
 .modal {
   display: block; 
@@ -32,38 +60,80 @@ margin-left: 50px;
   left: 0;
   opacity: 0;
   top: 0;
-  width: 80%;
-  height: 80%;
+  width: 70%;
+  height: auto;
   overflow: auto; 
-  background-color: #fefefe;
+  background-color: white;
 }
 
 .modal-content {
-  background-color: #fefefe;
+  background-color: white;
   margin: auto;
   width: 100%;
+}
+
+.modal-list {
+  padding-right: 25px;
 }
 
 .modal-list li{
     font-size: 25px;
     color: black;
     padding-top: 25px;
+    font-weight: bold;
+}
+
+.modal-list li span{
+  font-weight: 300;
 }
 
 .modal-list img{
   padding-top: 30px;
+  padding-bottom: 30px;
+  width:100%;
+  height:auto;
 }
 
-#restaurant-name {
-    font-size: 40px;
+.close {
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+}
+.close:hover,
+.close:focus {
+  cursor:pointer;
+}
+
+.modal-list h3 {
+    font-size: 36px;
     color: darkblue;
     text-align: center;
-    border-bottom: 1px solid #0000001c;
+    border-bottom: 1px solid black;
     padding-bottom: 3%;
+    padding-top: 15px;
 }
 
-#map{
-  height:400px;
-  width: 100%;
+.modal-list h2 {
+  font-size: 26;
+  text-align: center;
+  font-weight: bold;
+  border-style: 1px solid black;
+}
+
+.center{
+  padding-top: 25px;
+  padding-bottom: 10px;
+  height:350px;
+  width: auto;
+}
+
+.modal::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 15px rgb(0, 44, 11);
+  box-shadow: black;
+}
+.modal::-webkit-scrollbar
+{
+  width: 15px;
 }
 
