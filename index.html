@@ -12,10 +12,6 @@
   </header>
   </head>
   <body>
-    <div class="header">
-      <h1>Brews for Bootcampers!</h1>
-    </div>
-
     <div class="container"> 
       <div class="grid-container align-middle">
         <div class="grid-y medium-grid-frame align-middle">
@@ -26,19 +22,14 @@
             <div class="small-2 cell small-auto">
               <input id="zipcode" type="text" class="address-form" placeholder="Zipcode" required>
             </div>
-            <div class="small-2 cell small-auto">
-              <label for ="radius" class="text-right">Radius (miles):</label>
-            </div>
-            <div class = "small-2 cell small-auto">
-              <input id="radius" type="number" min="1" max="25" value="15" class="address-form" placeholder="Radius in Miles" required>
-            </div>
             <div class = "small-2 cell small-auto">
               <a class="button radius" id="submit-button">submit</a>
             </div>
            </div>
           </div>
+          <!-- Query will be made on coordinates from IP address or -->
           <div class="align-center-middle text-center"> 
-            <h3>Enter Your Zip Code to Find a Local Brewey!</h3>
+            <h3>Enter Your Zip Code to Find a Local Brewery! </h3>
           </div> 
         </div>
       </div> 
@@ -50,48 +41,36 @@
             <span id="close">&times;</span>
           </button>
           <div class = "grid-x grid-padding-x">
-            <!--restaurant column takes up entire space until event api response received -->
+            <!--Modal needs to be replaced with foundation cards in a grid. Only means of adding images would be grabbing a random beer related image from ./assets. -->
+            <!--Need a better method of storing cards. May need to rethink adding a result page since we're displaying all results at once.-->
             <ul class="modal-list column small-12 align-center-left text-left disc" id="restaurant_column">
-              <h2> Restaurant </h2>
+              <h2> Brewery </h2>
               <h3 id="restaurant-name"></h3>
               <li class="modal-information"> Address: <span id="restaurant-address"> </span> </li> 
               <li class="modal-information"> Distance: <span id="restaurant-distance"></span></li>
-              <li class="modal-information"> Price Range ($-$$$$): <span id="restaurant-price-range"></span></li>
-              <li class="modal-information"> Star Rating: <span id="restaurant-star-rating"></span></li>
-              <li class="modal-information"> Review Count: <span id="restaurant-review-count"></span></li>
               <li class="modal-information"> Phone #: <span id="restaurant-phone-number"></span></li>
               <li id="restaurant-website"><a id="restaurant-add-website" ></a></li>
               <img id="restaurant-website-image" src=""/>
-              <li class="center" id="restaurant-map"> </li>
               </ul>
 
-            <ul class="modal-list column small-5 align-center-left text-left disc" id="event_column">
-              <li class="center" id="event-map"></li>
-            </ul> 
           </div>
         </div>
       </div>
       
-      <!--local storage card placeholder-->
+      <!--We could add a "like" icon to cards for selective storage. Only "liked" cards will be displayed in the storage container.-->
       <div class="storage-column">
           <div class="storage-row ">
             <div class="grid-container">
               <div class="grid-x grid-margin-x small-up-2 medium-up-3">
-            </div>
-            </div>
-            <div class="small-6 large-6 columns"></div>
           </div>
       </div>
 
 
     </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js" ></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=&libraries=places" type="text/javascript"></script>
   <script src="	https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js" ></script>
-  <script src="Assets/Javascript/yelp.js"></script>
-  <script src="Assets/Javascript/google_maps.js"></script>
+  <script src="Assets/Javascript/openbrewery.js"></script>
   <script src="Assets/Javascript/geolocation.js"></script>
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
 
 </body>
