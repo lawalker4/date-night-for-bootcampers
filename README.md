@@ -11,6 +11,6 @@ The user will enter a specific venue/category and time and receive information a
 
 Technology used:
 
-APIs used:
-CSS used: 
+APIs used: Google Maps, Yelp Fusion, ipify, ip-api 
+CSS used: Foundation
 

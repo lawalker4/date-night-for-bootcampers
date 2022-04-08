@@ -2,67 +2,95 @@
 <html lang="en-us">
   <head>
     <meta charset="UTF-8">
-      <title>Date Night for Bootcampers</title>
+      <title>Brews for Bootcampers</title>
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/css/foundation.min.css">
       <link href="https://fonts.googleapis.com/css?family=Poppins:900" rel="stylesheet">
       <link rel="stylesheet" type="text/css" href="Assets/CSS/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">  
-
+  <header>
+    <h1> Brews for Bootcampers! </h1>
+  </header>
   </head>
   <body>
     <div class="header">
-      <h1>Date Night for Bootcampers</h1>
+      <h1>Brews for Bootcampers!</h1>
     </div>
 
     <div class="container"> 
-      <div class="col">
-        <div class="row">
-            <div class="row info-input">  
-              <div class="medium-6 cell col">
-                <input id="user-zipcode" type="text" class="validate address-form" placeholder="Zipcode" required>
-              </div>
-              <div class="medium-6 cell col">
-                <input id="user-radius" type="number" min="1" max="25" value="15" class="validate address-form" placeholder="Radius in Miles" required>
-              </div>
-              <div class="col">
-              <a class="button" id="submit-button">submit</a>
-              </div>
+      <div class="grid-container align-middle">
+        <div class="grid-y medium-grid-frame align-middle">
+          <div class="grid-x grid-margin-x align-center-middle text-center" id="grid_x_input">  
+            <div class="small-2 cell small-auto ">
+              <label for ="zipcode" class="text-right">Zip Code: </label> 
             </div>
-          </form>
+            <div class="small-2 cell small-auto">
+              <input id="zipcode" type="text" class="address-form" placeholder="Zipcode" required>
+            </div>
+            <div class="small-2 cell small-auto">
+              <label for ="radius" class="text-right">Radius (miles):</label>
+            </div>
+            <div class = "small-2 cell small-auto">
+              <input id="radius" type="number" min="1" max="25" value="15" class="address-form" placeholder="Radius in Miles" required>
+            </div>
+            <div class = "small-2 cell small-auto">
+              <a class="button radius" id="submit-button">submit</a>
+            </div>
+           </div>
+          </div>
+          <div class="align-center-middle text-center"> 
+            <h3>Enter Your Zip Code to Find a Local Brewey!</h3>
+          </div> 
         </div>
       </div> 
 
-      <div class="modal" id="restaurant-display">
+      
+      <div class="modal reveal full" id="restaurant-display" data-reveal>
         <div class="modal-content">
           <button class="close-button" aria-label="Close alert" type="button" data-close>
             <span id="close">&times;</span>
           </button>
-          <ul class="modal-list col-md-6">
-            <h3 id="restaurant-name"></h3>
-            <li class="restaurant-information"> Address: <span id="address"> </span> </li> 
-            <li class="restaurant-information"> Distance: <span id="distance"></span></li>
-            <li class="restaurant-information"> Price Range ($-$$$$): <span id="price-range"></span></li>
-            <li class="restaurant-information"> Star Rating: <span id="star-rating"></span></li>
-            <li class="restaurant-information"> Phone #: <span id="phone-number"></span></li>
-            <li id="website"><a id="add-website" >Website</a></li>
-            <img id="website-image" src=""/>
-            </ul>
-            <div class="center" id="map"></div>
+          <div class = "grid-x grid-padding-x">
+            <!--restaurant column takes up entire space until event api response received -->
+            <ul class="modal-list column small-12 align-center-left text-left disc" id="restaurant_column">
+              <h2> Restaurant </h2>
+              <h3 id="restaurant-name"></h3>
+              <li class="modal-information"> Address: <span id="restaurant-address"> </span> </li> 
+              <li class="modal-information"> Distance: <span id="restaurant-distance"></span></li>
+              <li class="modal-information"> Price Range ($-$$$$): <span id="restaurant-price-range"></span></li>
+              <li class="modal-information"> Star Rating: <span id="restaurant-star-rating"></span></li>
+              <li class="modal-information"> Review Count: <span id="restaurant-review-count"></span></li>
+              <li class="modal-information"> Phone #: <span id="restaurant-phone-number"></span></li>
+              <li id="restaurant-website"><a id="restaurant-add-website" ></a></li>
+              <img id="restaurant-website-image" src=""/>
+              <li class="center" id="restaurant-map"> </li>
+              </ul>
+
+            <ul class="modal-list column small-5 align-center-left text-left disc" id="event_column">
+              <li class="center" id="event-map"></li>
+            </ul> 
           </div>
-          <ul class="modal-list col-md-6">
-            <h3 id="event-name"></h3>
-            <li class=""> Info: <span id=""></span></li>
-          </ul> 
-            
         </div>
       </div>
+      
+      <!--local storage card placeholder-->
+      <div class="storage-column">
+          <div class="storage-row ">
+            <div class="grid-container">
+              <div class="grid-x grid-margin-x small-up-2 medium-up-3">
+            </div>
+            </div>
+            <div class="small-6 large-6 columns"></div>
+          </div>
+      </div>
+
 
     </div>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js" ></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=&libraries=places" type="text/javascript"></script>
   <script src="	https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js" ></script>
   <script src="Assets/Javascript/yelp.js"></script>
   <script src="Assets/Javascript/google_maps.js"></script>
+  <script src="Assets/Javascript/geolocation.js"></script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
 
