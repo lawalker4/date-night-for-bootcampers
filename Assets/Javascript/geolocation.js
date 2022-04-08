@@ -1,39 +1,29 @@
-var zip_code; 
-var ip;
-
+var user_zip_code; 
+var ip_latitude;
+var ip_longitude;
+var ip_bool = "False" 
 //attempt geolocation 
 function getLocation() {
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(GetZipCode);
+		ip_bool = "True"
 	}
 }
 
-//get zipcode from IP address
+//get geolocation data from IP address
 function GetZipCode() {
-		ip = GetIP()
-		//console.log(ip)
-		$.get("http://ip-api.com/json/" + ip, function(e){ 
+		$.get("https://api.freegeoip.app/json/?apikey=f359b860-b76b-11ec-98a5-ef0834c39bc8", function(e){ 
 			setTimeout(function(){
-				//early exit if no response or hanging  
+				//early exit if no response 
 				return;
-			   }, 2000);
-			zip_code = e.zip 
+			   }, 3000);
+			   
+			user_zip_code = e.zip_code 
+			ip_latitude = e.latitude 
+		 	ip_longitude = e.longitude
+
+			$('#zipcode').val(user_zip_code)
 		  });
-		//console.log(zip_code)
-		$('#zipcode').val(zip_code)
 	};
 
-//get IP address
-function GetIP(){
-	$.ajaxSetup({async: false});
-	$.get('https://api.ipify.org/?format=json', function(e){ 
-	setTimeout(function(){
-		//early exit if no response or hanging  
-		return;
-		}, 2000);
-	  ip = e.ip; 
-	});
-	return ip;
-  }
-
-  getLocation();
+getLocation();
