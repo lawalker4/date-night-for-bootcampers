@@ -32,16 +32,19 @@ $("#submit-button").on("click", function() {
       console.log(response)
       var random_num = Math.floor(Math.random() * response.length);
       var response_array = response[random_num];
-      //only return distance if ip coordinates exist. 
+  //fill html elements inside the modal with response data.
+      // only return distance if ip coordinates exist. 
       if(localStorage.getItem("ip_latitude") !== null){
         var brewery_distance = distance(parseFloat(localStorage.getItem("ip_latitude")),parseFloat(localStorage.getItem("ip_longitude")),response_array.latitude,response_array.longitude);
         $("#brewery-distance").html(Number(brewery_distance).toFixed(1) + " miles");
     }
-      //fill html elements inside the modal with response data.
+      // only format phone number if present
+      if(response_array.phone !== null || response_array.phone !== ""){
       var phone_number = response_array.phone.replace(/(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)/, '$1$2$3-$4$5$6-$7$8$9$10')
+      $("#brewery-phone-number").html(phone_number); 
+      }
       $("#brewery-name").html(response_array.name);
       $("#brewery-address").html(response_array.street + " " + response_array.city + " " + response_array.state);
-      $("#brewery-phone-number").html(phone_number); 
       $("#brewery-add-website").html("Website").attr("href", response_array.website_url);   
       $("#brewery-website-image").attr("src","");
       });
