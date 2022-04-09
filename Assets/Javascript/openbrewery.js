@@ -29,17 +29,20 @@ $("#submit-button").on("click", function() {
   $.ajax({
     url:queryUrl,
 }).then(function(response) {
-  console.log(response)
+      console.log(response)
+      var random_num = Math.floor(Math.random() * response.length);
+      var response_array = response[random_num];
       //only return distance if ip coordinates exist. 
       if(localStorage.getItem("ip_latitude") !== null){
-        var brewery_distance = distance(parseFloat(localStorage.getItem("ip_latitude")),parseFloat(localStorage.getItem("ip_longitude")),response[0].latitude,response[0].longitude);
+        var brewery_distance = distance(parseFloat(localStorage.getItem("ip_latitude")),parseFloat(localStorage.getItem("ip_longitude")),response_array.latitude,response_array.longitude);
         $("#restaurant-distance").html(Number(brewery_distance).toFixed(1) + " miles");
     }
       //fill html elements inside the modal with response data.
-      $("#restaurant-name").html(response[0].name);
-      $("#restaurant-address").html(response[0].street + " " + response[0].city + " " + response[0].state);
-      $("#restaurant-phone-number").html(response[0].phone); 
-      $("#restaurant-add-website").html("Website").attr("href", response[0].website_url);   
+      var phone_number = response_array.phone.replace(/(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)/, '$1$2$3-$4$5$6-$7$8$9$10')
+      $("#restaurant-name").html(response_array.name);
+      $("#restaurant-address").html(response_array.street + " " + response_array.city + " " + response_array.state);
+      $("#restaurant-phone-number").html(phone_number); 
+      $("#restaurant-add-website").html("Website").attr("href", response_array.website_url);   
       $("#restaurant-website-image").attr("src","");
       });
 
