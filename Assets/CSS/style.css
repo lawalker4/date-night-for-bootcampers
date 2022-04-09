@@ -37,29 +37,14 @@ header h1{
   margin-bottom: 15px;
 }
 
-.storage-column{
-  margin-top: 30vh;
-  padding-left:5%;
-  padding-right:10%;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-.storage-row{
-  text-align: center;
-  height: 30vh;
-  background-color:darkblue;
-}
-
 .modal {
   display: block; 
   margin-top: 125px;
-  position: fixed; 
   z-index: -99999;
   padding-top: 0px; 
-  left: 0;
+  margin-left: auto;
+  margin-right: auto;
   opacity: 0;
-  top: 0;
   width: 70%;
   height: auto;
   overflow: auto; 
@@ -118,22 +103,5 @@ header h1{
   text-align: center;
   font-weight: bold;
   border-style: 1px solid black;
-}
-
-.center{
-  padding-top: 25px;
-  padding-bottom: 10px;
-  height:350px;
-  width: auto;
-}
-
-.modal::-webkit-scrollbar-track
-{
-  -webkit-box-shadow: inset 0 0 15px rgb(0, 44, 11);
-  box-shadow: black;
-}
-.modal::-webkit-scrollbar
-{
-  width: 15px;
 }
 
