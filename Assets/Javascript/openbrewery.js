@@ -77,6 +77,13 @@ function distance(lat1, lon1, lat2, lon2) {
 
 function save_data(){
   //save card data to local storage
+  for (var i = 0; i < breweryDistance.length; i++){
+      var restaurantDisplay=document.addElementById(breweryDistance[i]){
+      var text= document.getElementById(latitude)
+      localStorage.setItem(ip_latitude, text.value)
+      
+    })
+  }
 }
 
 $(function(){
