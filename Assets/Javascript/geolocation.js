@@ -1,6 +1,4 @@
 var user_zip_code; 
-var ip_latitude;
-var ip_longitude;
 var ip_bool = "False" 
 //attempt geolocation 
 function getLocation() {
@@ -19,9 +17,8 @@ function GetZipCode() {
 			   }, 3000);
 			   
 			user_zip_code = e.zip_code 
-			ip_latitude = e.latitude 
-		 	ip_longitude = e.longitude
-
+			localStorage.setItem("ip_latitude", String(e.latitude))
+			localStorage.setItem("ip_longitude", String(e.longitude))
 			$('#zipcode').val(user_zip_code)
 		  });
 	};
