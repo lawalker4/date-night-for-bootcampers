@@ -1,5 +1,7 @@
 # date-night-for-bootcampers
+
 Project 1 (Group Project)- This is an application that can have the clients pick a restaurant, directions and events in the area. 
+
 
 Purpose of application:
 
@@ -13,4 +15,7 @@ Technology used:
 
 APIs used: FreeGeoIpAPI, Open Brewery DB, TheZipCodes, 
 CSS used: Foundation
+
+#Authors
+Jefferson, Daniel and Ashley
 
