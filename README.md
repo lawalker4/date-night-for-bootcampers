@@ -16,6 +16,6 @@ Technology used:
 APIs used: FreeGeoIpAPI, Open Brewery DB, TheZipCodes, 
 CSS used: Foundation
 
-#Authors
+# Authors
 Jefferson, Daniel and Ashley
 
