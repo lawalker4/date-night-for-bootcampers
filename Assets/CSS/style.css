@@ -21,10 +21,12 @@ header h1{
 .grid-container{
   background-color: white; 
   flex:1;
+  border-radius: 20px;
 }
 .grid-container h3{
   font-size: 28px;
   margin-top: -76vh;
+  
 }
 
 #grid_x_input{
@@ -36,6 +38,22 @@ header h1{
   font-weight: bold;
   margin-bottom: 15px;
 }
+
+.storage-column{
+  margin-top: 30vh;
+  padding-left:5%;
+  padding-right:10%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.storage-row{
+  text-align: center;
+  height: 30vh;
+  background-color: darkblue;
+  border-radius: 20px;
+}
+
 
 .modal {
   display: block; 
@@ -49,6 +67,7 @@ header h1{
   height: auto;
   overflow: auto; 
   background-color: white;
+
 }
 
 .modal-content {
