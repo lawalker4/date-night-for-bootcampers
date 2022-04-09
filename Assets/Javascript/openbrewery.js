@@ -1,4 +1,4 @@
-var modal = document.getElementById('restaurant-display');
+var modal = document.getElementById("brewery-display");
 var btn = document.getElementById("submit-button");
 var span = document.getElementById("close");
 var zip_code_latitude;
@@ -10,37 +10,40 @@ $("#submit-button").on("click", function() {
  event.preventDefault();
   var zipCode =  $("#zipcode").val();
   //if no geolocation then return zip code coordinates else return ip address coordinates.
-  latitude = ip_latitude
-  longitude = ip_longitude
+  latitude = parseFloat(localStorage.getItem("ip_latitude"))
+  longitude = parseFloat(localStorage.getItem("ip_longitude"))
   if (user_zip_code != zipCode || ip_bool == "False"){
-	$.get("https://thezipcodes.com/api/v1/search?zipCode=" + zipCode + "&apiKey=9f8032d8d5319e78db906f46c3803340"
-	).then(function(e) {
-	for (var i = 0; i < e.location.length; i++){
-		if(e.location[i].country == "US" || e.location[i].countryCode3 == "USA"){
-			latitude = e.location[i].latitude
-			longitude = e.location[i].longitude
-    }}
-    
-		
+    $.get("https://thezipcodes.com/api/v1/search?zipCode=" + zipCode + "&apiKey=9f8032d8d5319e78db906f46c3803340"
+    ).then(function(e) {
+    for (var i = 0; i < e.location.length; i++){
+      if(e.location[i].country == "US" || e.location[i].countryCode3 == "USA"){
+        latitude = e.location[i].latitude
+        longitude = e.location[i].longitude
+      }}
 	})}
   //wait 1.2 seconds to get zip code before proceeding.
   setTimeout(function(){ 
   console.log(latitude)
   var queryUrl = "https://api.openbrewerydb.org/breweries?by_dist=" + latitude +"," + longitude
 
-  
   $.ajax({
     url:queryUrl,
 }).then(function(response) {
-  console.log(response)
-      var brewery_distance = distance(latitude,longitude,response[0].latitude,response[0].longitude);
+      console.log(response)
+      var random_num = Math.floor(Math.random() * response.length);
+      var response_array = response[random_num];
+      //only return distance if ip coordinates exist. 
+      if(localStorage.getItem("ip_latitude") !== null){
+        var brewery_distance = distance(parseFloat(localStorage.getItem("ip_latitude")),parseFloat(localStorage.getItem("ip_longitude")),response_array.latitude,response_array.longitude);
+        $("#brewery-distance").html(Number(brewery_distance).toFixed(1) + " miles");
+    }
       //fill html elements inside the modal with response data.
-      $("#restaurant-name").html(response[0].name);
-      $("#restaurant-address").html(response[0].street + " " + response[0].city + " " + response[0].state);
-      $("#restaurant-distance").html(Number(brewery_distance).toFixed(1) + " miles");
-      $("#restaurant-phone-number").html(response[0].phone); 
-      $("#restaurant-add-website").html("Website").attr("href", response[0].website_url);   
-      $("#restaurant-website-image").attr("src","");
+      var phone_number = response_array.phone.replace(/(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)/, '$1$2$3-$4$5$6-$7$8$9$10')
+      $("#brewery-name").html(response_array.name);
+      $("#brewery-address").html(response_array.street + " " + response_array.city + " " + response_array.state);
+      $("#brewery-phone-number").html(phone_number); 
+      $("#brewery-add-website").html("Website").attr("href", response_array.website_url);   
+      $("#brewery-website-image").attr("src","");
       });
 
       setTimeout(function(){
