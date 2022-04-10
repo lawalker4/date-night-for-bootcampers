@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
       <title>Brews for Bootcampers</title>
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/css/foundation.min.css">
-      <link href="https://fonts.googleapis.com/css?family=Poppins:900" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
       <link rel="stylesheet" type="text/css" href="Assets/CSS/style.css">
       <link rel="stylesheet" type="text/css" href="Assets/CSS/style2.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">  
@@ -17,55 +17,103 @@
   </head>
   <body>
     <div class="container"> 
-      <div class="grid-container align-middle">
-        <div class="grid-y medium-grid-frame align-middle">
-          <div class="grid-x grid-margin-x align-center-middle text-center" id="grid_x_input">  
-            <div class="small-2 cell small-auto ">
-              <label for ="zipcode" class="text-right">Zip Code: </label> 
+      <div class="grid-container align-middle" id="grid-container-1">
+        <!-- Query will be made on coordinates from IP address or entered zip code-->
+        <div class="align-center-middle text-center margin-x"> 
+          <h3>Enter Your Zip Code to Find a Local Brewery! </h3>
+        </div> 
+        <div class="grid-y tiny-grid-frame align-middle">
+          <div class="grid-x tiny-grid-frame align-center-middle text-center" id="grid_x_input">  
+              <div class="column column-block small-centered">
+                <label for ="zipcode" class="text-right">Zip Code: </label> 
+              </div>
+              <div class="column column-block small-centered">
+                <input id="zipcode" type="text" class="address-form" placeholder="Zipcode" required>
+              </div>
+              <div class = "column column-block small-centered">
+                <a class="button radius" id="submit-button">submit</a>
+              </div>
             </div>
-            <div class="small-2 cell small-auto">
-              <input id="zipcode" type="text" class="address-form" placeholder="Zipcode" required>
-            </div>
-            <div class = "small-2 cell small-auto">
-              <a class="button radius" id="submit-button">submit</a>
-            </div>
-           </div>
           </div>
-          <!-- Query will be made on coordinates from IP address or entered zip code-->
-          <div class="align-center-middle text-center"> 
-            <h3>Enter Your Zip Code to Find a Local Brewery! </h3>
-          </div> 
         </div>
-
       </div> 
-
       
-      <div class="modal reveal small" id="brewery-display" data-reveal>
-        <div class="modal-content">
-          <button class="close-button" aria-label="Close alert" type="button" data-close>
-            <span id="close">&times;</span>
-          </button>
-          <div class = "grid-x grid-padding-x">
-            <ul class="modal-list column small-12 align-center-left text-left disc" id="brewery_column">
-              <h2> Brewery </h2>
-              <h3 id="brewery-name"></h3>
-              <li class="modal-information"> Address: <span id="brewery-address"> </span> </li> 
-              <li class="modal-information"> Distance: <span id="brewery-distance"></span></li>
-              <li class="modal-information"> Phone #: <span id="brewery-phone-number"></span></li>
-              <li id="brewery-website"><a id="brewery-add-website" ></a></li>
-              <img id="brewery-website-image" src=""/>
-              </ul>
-
+      <div class="grid-container align-middle" id="grid-container-2">
+        <i class="fa fa-refresh fa-spin-hover" id="reset-button"></i>
+        <div class="grid-x small small-up-1 medium-up-2 large-up-3 grid-padding-x medium-unstack equal-height-cards text-left">
+          <div class="cell small-4">
+            <div class="card">
+              <div class="card-divider" id="card-title">
+                This is a header
+              </div>
+              <img src="https://unsplash.it/700/400/">
+              <div class="card-section" id="card-body">
+                <h4>This is a card.</h4>
+                <p> Placeholder</p>
+              </div>
+            </div>
+          </div>
+          <div class="cell small-auto">
+            <div class="card">
+              <div class="card-section">
+                <div class="card-divider" id="card-title">
+                  This is a header
+                </div>
+                <img src="https://unsplash.it/500/500/">
+                <h4>This is a card.</h4>
+                <p>Placeholder</p>
+              </div>
+            </div>
+          </div>
+          <div class="cell small-auto">
+            <div class="card">
+              <div class="card-section">
+                <div class="card-divider" id="card-title">
+                  This is a header
+                </div>
+                <img src="https://unsplash.it/500/500/">
+                <h4>This is a card.</h4>
+                <p>Placeholder</p>
+              </div>
+            </div>
+          </div>
+          <div class="cell small-auto">
+            <div class="card">
+              <div class="card-section">
+                <div class="card-divider" id="card-title">
+                  This is a header
+                </div>
+                <img src="https://unsplash.it/500/500/">
+                <h4>This is a card.</h4>
+                <p>Placeholder</p>
+              </div>
+            </div>
+          </div>
+          <div class="cell small-auto">
+            <div class="card">
+              <div class="card-section">
+                <div class="card-divider" id="card-title">
+                  This is a header
+                </div>
+                <img src="https://unsplash.it/500/500/">
+                <h4>This is a card.</h4>
+                <p>Placeholder</p>
+              </div>
+            </div>
+          </div>
+          <div class="cell small-auto">
+            <div class="card">
+              <div class="card-section">
+                <div class="card-divider" id="card-title">
+                  This is a header
+                </div>
+                <img src="https://unsplash.it/500/500/">
+                <h4>This is a card.</h4>
+                <p>Placeholder</p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      
-      <!--We could add a "like" icon to cards for selective storage. Only "liked" cards will be displayed in the storage container.-->
-      <div class="storage-column">
-          <div class="storage-row ">
-            <div class="grid-container">
-              <div class="grid-x grid-margin-x small-up-2 medium-up-3">
-          </div>
       </div>
 
 
