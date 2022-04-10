@@ -1,7 +1,7 @@
 var btn = document.getElementById("submit-button");
 var result_card = document.querySelector("#grid-container-1")
 var container = document.getElementsByClassName("container")[0]
-var main_body = document.getElementsByTagName("body")[0];
+var main_body = document.getElementsByTagName("main")[0];
 var zip_code_latitude;
 var zip_code_longitude;
 var latitude;
@@ -96,12 +96,34 @@ $("#submit-button").on("click", function() {
       i++;
       } while (img_random_num_array.includes(img_random_num) && i < 22)
       if (img_random_num_array.length == 23){ img_random_num_array = []};
+      var temp_result_storage = localStorage.getItem("result_storage")
+      var temp_container = [];
+      var beerPhotos_src = beerPhotos[img_random_num]
+      //make sure the same brewery name is assigned the same image.
+      if (temp_result_storage && beerPhotos.length > 1) {
+      temp_container = JSON.parse(temp_result_storage)
+      other_temp_container = [];
+      for (var i = 0; i < temp_container.length; i++){
+        var other_temp_container = temp_container[i][2]
+        if (other_temp_container.name == response_array.name){
+          beerPhotos_src = temp_container[i][0]
+          console.log(beerPhotos_src)
+          console.log(img_random_num)
+          break }
+        }
+      }
+      //store response data for later use 
+      modified_response_array = [];
+      modified_response_array.push(beerPhotos_src)
+      modified_response_array.push(brewery_distance)
+      modified_response_array.push(response_array)
+      result_storage.push(modified_response_array)
 
       img_random_num_array.push(img_random_num)
       localStorage.setItem("img_random_num_array", JSON.stringify(img_random_num_array))
 
       let card_image = document.createElement('img')
-      card_image.src = beerPhotos[img_random_num]
+      card_image.src = beerPhotos_src
       card_image.className = "card-image"
       card.appendChild(card_image)
       let card_section = document.createElement('div')
@@ -134,12 +156,6 @@ $("#submit-button").on("click", function() {
         $("#brewery-add-website").html("Website").attr("href", response_array.website_url);}
         //hide empty html content if missing api data. 
       $('#result-card div:has(span:empty,src:empty,href:empty,a:empty,p:empty)').remove(); 
-      //store response data for later use 
-      modified_response_array = [];
-      modified_response_array.push(beerPhotos[img_random_num])
-      modified_response_array.push(brewery_distance)
-      modified_response_array.push(response_array)
-      result_storage.push(modified_response_array)
       localStorage.setItem("result_storage",JSON.stringify(result_storage))
       modify_search_history();
       }});
@@ -282,6 +298,7 @@ function load_initial_search_history(){
       user_zip_code = localStorage.getItem("user_zipcode")
       $('#grid-container-2').remove();
       result_storage = [];
+      img_random_num_array = [];
       window.localStorage.clear();
       localStorage.setItem("ip_latitude", latitude)
       localStorage.setItem("ip_longitude", longitude)
@@ -376,11 +393,3 @@ function resize_columns(array_length){
 }
 
 load_initial_search_history();
-
-function search(nameKey, myArray){
-  for (var i=0; i < myArray.length; i++) {
-      if (myArray[i].name === nameKey) {
-          return myArray[i];
-      }
-  }
-}
