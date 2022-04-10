@@ -107,8 +107,6 @@ $("#submit-button").on("click", function() {
         var other_temp_container = temp_container[i][2]
         if (other_temp_container.name == response_array.name){
           beerPhotos_src = temp_container[i][0]
-          console.log(beerPhotos_src)
-          console.log(img_random_num)
           break }
         }
       }
@@ -193,6 +191,26 @@ function modify_search_history(){
     grid_x.id = "grid_x"
     grid_x.className = "grid-x medium" + " small-up-" + 1 + " medium-up-" + 1 + " large-up-" + 1 + " grid-padding-x medium-unstack equal-height-cards text-left"
     grid_container_2.appendChild(grid_x)
+
+    //remove all local storage except user zipcode and ip coordinates.
+    var reset = document.getElementById("reset-button");
+    reset.addEventListener("click",function(){
+      //change icon color when clicked
+      reset.style.color = "brown"
+      latitude = localStorage.getItem("ip_latitude")
+      longitude = localStorage.getItem("ip_longitude")
+      user_zip_code = localStorage.getItem("user_zipcode")
+      $('#grid-container-2').remove();
+      result_storage = [];
+      img_random_num_array = [];
+      window.localStorage.clear();
+      localStorage.setItem("ip_latitude", latitude)
+      localStorage.setItem("ip_longitude", longitude)
+      localStorage.setItem("user_zipcode", user_zip_code)
+      setTimeout(function(){ 
+        reset.style.color = "black"
+      },400)
+    })
   }
   //remove oldest search result if > search_history_length.
   if (result_storage_temp.length > search_history_length) {
