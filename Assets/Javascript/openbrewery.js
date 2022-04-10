@@ -411,3 +411,4 @@ function resize_columns(array_length){
 }
 
 load_initial_search_history();
+
