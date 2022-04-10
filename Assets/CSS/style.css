@@ -6,9 +6,17 @@ body {
 }
 
 header h1{
-  font-size: 34px;
-  margin-top: 3vh;
-  margin-left: 5vw;
+  margin-top: 3rem;
+}
+
+a {
+  color: darkorange
+}
+
+a:hover {
+  color: rgb(255, 81, 0);
+  background-color: transparent;
+  text-decoration: underline;
 }
 
 #submit-button { 
@@ -17,110 +25,72 @@ header h1{
   border-radius: 35px;
   font-size: 16px;
 }
+.container {
+  width: 90vw;
+  margin: auto;
+  padding-top: 5rem ;
+  padding-bottom: 8rem;
+}
+
+.container div {
+  padding: 5px;
+}
 
 .grid-container{
   background-color: white; 
-  flex:1;
   border-radius: 20px;
 }
-.grid-container h3{
-  font-size: 28px;
-  margin-top: -76vh;
-  
+
+#grid-container-1{
+  max-width: 50rem;
 }
 
-#grid_x_input{
-  margin-top: 30vh;
+.grid_row{
+  margin:auto;
+}
+.grid-container h3{
+  padding-top: 5px;
+  font-size: 28px;
 }
 
 .grid-container label{
   font-size: 18px;
   font-weight: bold;
-  margin-bottom: 15px;
+  padding-right: 1.5rem;
+  padding-bottom: 1rem;
 }
 
-.storage-column{
-  margin-top: 30vh;
-  padding-left:5%;
-  padding-right:10%;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+#result-card p{
+  text-align: left;
 }
-.storage-row{
-  text-align: center;
-  height: 30vh;
-  background-color: darkblue;
-  border-radius: 20px;
-}
-
-
-.modal {
-  display: block; 
-  margin-top: 125px;
-  z-index: -99999;
-  padding-top: 0px; 
-  margin-left: auto;
-  margin-right: auto;
-  opacity: 0;
-  width: 70%;
-  height: auto;
-  overflow: auto; 
-  background-color: white;
-
-}
-
-.modal-content {
-  background-color: white;
-  margin: auto;
-  width: 100%;
-}
-
-.modal-list {
-  padding-right: 25px;
-}
-
-.modal-list li{
-    font-size: 25px;
-    color: black;
-    padding-top: 25px;
+#result-card p, h3{
     font-weight: bold;
 }
 
-.modal-list li span{
+#result-card span{
   font-weight: 300;
 }
 
-.modal-list img{
-  padding-top: 30px;
-  padding-bottom: 30px;
-  width:100%;
+#result-card img{
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  width:auto;
   height:auto;
+  max-width: 40rem;
+  max-height: 40rem;
 }
 
-.close {
-  float: left;
-  font-size: 24px;
-  font-weight: bold;
-}
-.close:hover,
-.close:focus {
-  cursor:pointer;
+.equal-height-cards cell {
+    display: flex;
+    align-items: stretch;
 }
 
-.modal-list h3 {
-    font-size: 36px;
-    color: darkblue;
-    text-align: center;
-    border-bottom: 1px solid black;
-    padding-bottom: 3%;
-    padding-top: 15px;
+.card img{
+  height: 80%;
+  width: 80%;
+  background-color: var(--secondary);
 }
 
-.modal-list h2 {
-  font-size: 26;
-  text-align: center;
-  font-weight: bold;
-  border-style: 1px solid black;
+.card-divider{
+  background-color: var(--secondary);
 }
-
