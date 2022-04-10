@@ -95,25 +95,25 @@ $("#submit-button").on("click", function() {
       card_section.className = "card-section"
       card_section.id = "card-body"
       card.appendChild(card_section)
-      if(brewery_distance !== null || brewery_distance !== ""){
+      if(brewery_distance !== null && brewery_distance !== ""){
         let card_distance = document.createElement('p')
         card_distance.id = "brewery-distance"
         card_section.appendChild(card_distance)
         $("#brewery-distance").html("Distance: " + "<span>" + Number(brewery_distance).toFixed(1) + " miles" + "</span>");}
       // only format phone number if present
-      if(response_array.phone !== null || response_array.phone !== ""){
+      if(response_array.phone !== null && response_array.phone !== "" && response_array.phone !== "null"){
         var phone_number = response_array.phone.replace(/(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)/, '$1$2$3-$4$5$6-$7$8$9$10')
         let card_phone_number = document.createElement('p')
         card_phone_number.id = "brewery-phone-number"
         card_section.appendChild(card_phone_number)
         $("#brewery-phone-number").html("Phone #: " + "<span>" + phone_number + "</span>")
       }
-      if (response_array.street !== null || response_array.street !== ""){
+      if (response_array.street !== null && response_array.street !== ""){
         let card_address = document.createElement('p')
         card_address.id = "brewery-address"
         card_section.appendChild(card_address)
         $("#brewery-address").html("Distance: " + "<span>" + response_array.street + " " + response_array.city + " " + response_array.state + "</span>");}
-      if (response_array.website_url !== null || response_array.website_url !== ""){
+      if (response_array.website_url !== null && response_array.website_url !== ""){
         let card_website = document.createElement('a')
         card_website.id = "brewery-add-website"
         card_section.appendChild(card_website)
