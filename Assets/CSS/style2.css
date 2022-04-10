@@ -111,3 +111,21 @@ div {
     background-color: var(--secondary);
     border-radius: 20px;
   }
+
+footer p {
+  postition: fixed;
+  background-color: var(--primary);
+  bottom: 0;
+  left: 0;
+  padding: 0.5rem 1rem;
+  width: 100%;
+  margin: auto;
+  color: #44130D;
+  font-size: 14px;
+}
+
+footer a {
+  color: #44130D;
+  font-size: 14px;
+}
+
