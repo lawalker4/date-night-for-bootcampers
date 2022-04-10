@@ -28,4 +28,6 @@ To run locally:
  3. The user will be able to save their results to their local storage.
 
 # Authors
-Jefferson, Daniel and Ashley
+Daniel @DanielLiszka
+Jefferson @Jefid
+Ashley @lawalker4
