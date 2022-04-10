@@ -1,6 +1,8 @@
 # Brews for Bootcampers
 
-Project 1 (Group Project)- This is an application that can have the clients pick a restaurant, directions and events in the area. 
+Project 1 (Group Project)- 
+
+This is an application that can have the clients pick a brewery and get directions to the brewy of their choice. They will also have the abilit to save their search results to their local storage. 
 
 # Purpose of application:
 
