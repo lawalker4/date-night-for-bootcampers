@@ -6,13 +6,15 @@ Project 1 (Group Project)- This is an application that can have the clients pick
 
 The user can access the website to look up a great brewery for the area. 
 This website will allow them to find a brewery and location, pick the perfect date spot and how to get there! 
+
 Our users will love this website and the features they will have at their fingertips. 
 
 
 # Technology used:
 
-APIs used: FreeGeoIpAPI, Open Brewery DB, TheZipCodes, 
-CSS used: Foundation
+* APIs used: FreeGeoIpAPI, Open Brewery DB, TheZipCodes
+
+* CSS used: Foundation
 
 # Deployment
 
