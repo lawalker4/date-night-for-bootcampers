@@ -1,30 +1,19 @@
 var btn = document.getElementById("submit-button");
-var reset = document.getElementById("reset-button");
 var result_card = document.querySelector("#grid-container-1")
+var container = document.getElementsByClassName("container")[0]
+var main_body = document.getElementsByTagName("body")[0];
 var zip_code_latitude;
 var zip_code_longitude;
 var latitude;
 var longitude;
 var img_random_num_array = [];
 var img_random_num
+var result_storage;
 result_storage = (localStorage.getItem("result_storage"))
 result_storage = (result_storage) ? JSON.parse(result_storage) : [];
 console.log(result_storage)
-
-//clear everything except IP coordinates 
-reset.addEventListener("click",function(){
-  //change icon color when clicked
-  reset.style.color = "brown"
-  latitude = localStorage.getItem("ip_latitude")
-  longitude = localStorage.getItem("ip_longitude")
-  localStorage.clear();
-  localStorage.setItem("ip_latitude", latitude)
-  localStorage.setItem("ip_longitude", longitude)
-  $('#grid-container-2').remove();
-  setTimeout(function(){ 
-    reset.style.color = "black"
-  },400)
-})
+//global parameters 
+var search_history_length = 12
 
 $("#submit-button").on("click", function() {
  event.preventDefault();
@@ -43,7 +32,6 @@ $("#submit-button").on("click", function() {
 	})}
   //wait 1.2 seconds to get coordinates before proceeding.
   setTimeout(function(){ 
-  console.log(latitude)
   var queryUrl = "https://api.openbrewerydb.org/breweries?by_dist=" + latitude +"," + longitude
 
   $.ajax({
@@ -140,7 +128,11 @@ $("#submit-button").on("click", function() {
         //hide empty html content if missing api data. 
       $('#result-card div:has(span:empty,src:empty,href:empty,a:empty,p:empty)').remove(); 
       //store response data for later use 
-      result_storage.push(response_array)
+      modified_response_array = [];
+      modified_response_array.push(beerPhotos[img_random_num])
+      modified_response_array.push(brewery_distance)
+      modified_response_array.push(response_array)
+      result_storage.push(modified_response_array)
       localStorage.setItem("result_storage",JSON.stringify(result_storage))
       }});
    },1200)});
@@ -159,6 +151,132 @@ function distance(lat1, lon1, lat2, lon2) {
   return dist
 }
 
+function load_initial_search_history(){
+  //max number of cards per row set to six
+  if (result_storage.length > 0) {
+
+    //clear everything except IP coordinates 
+    console.log(result_storage.length)
+    sizes = resize_columns(result_storage.length)
+    //console.log(sizes[0])
+    //console.log(sizes[1])
+    //console.log(sizes[2])
+    let grid_container_2 = document.createElement('div')
+    grid_container_2.id = "grid-container-2"
+    grid_container_2.className = "grid-container align-middle"
+    main_body.appendChild(grid_container_2)
+    let reset_icon = document.createElement("i")
+    reset_icon.id = "reset-button"
+    reset_icon.className = "fa fa-refresh fa-spin-hover"
+    grid_container_2.appendChild(reset_icon)
+    let grid_x = document.createElement('div')
+    grid_x.className = "grid-x medium" + " small-up-" + sizes[0] + " medium-up-" + sizes[1] + " large-up-" + sizes[2] + " grid-padding-x medium-unstack equal-height-cards text-left"
+    grid_container_2.appendChild(grid_x)
+
+    var reset = document.getElementById("reset-button");
+    reset.addEventListener("click",function(){
+      //change icon color when clicked
+      reset.style.color = "brown"
+      latitude = localStorage.getItem("ip_latitude")
+      longitude = localStorage.getItem("ip_longitude")
+      window.localStorage.clear();
+      for (var a in localStorage) {
+        console.log(a, ' = ', localStorage[a]);
+     }
+      localStorage.setItem("ip_latitude", latitude)
+      localStorage.setItem("ip_longitude", longitude)
+      $('#grid-container-2').remove();
+      setTimeout(function(){ 
+        reset.style.color = "black"
+      },400)
+    })
+
+    for (var i = 0; (i < search_history_length && i < result_storage.length); i++) {
+          var response_array = [];
+          var response_array = result_storage[(result_storage.length -1) -i]
+          console.log(response_array)
+          var beerPhotos = response_array[0]
+          console.log(beerPhotos)
+          var brewery_distance = parseFloat(response_array[1])
+          console.log(brewery_distance)
+          var response_array = response_array[2]
+          console.log(response_array)
+          var cell = document.createElement('div')
+          cell.className = "cell small-auto"
+          cell.id = "cell-" + i 
+          grid_x.appendChild(cell)
+          var card = document.createElement('div')
+          card.className = "card"
+          cell.appendChild(card)
+          var brewery_distance = distance(parseFloat(localStorage.getItem("ip_latitude")),parseFloat(localStorage.getItem("ip_longitude")),response_array.latitude,response_array.longitude)
+          if (response_array.name !== null || response_array.name !== ""){
+            let card_divider = document.createElement('div')
+            card_divider.className = "card-divider"
+            card_divider.id = "card-title"
+            card.appendChild(card_divider)
+            let card_name = document.createElement('h3')
+            card_name.innerHTML = response_array.name
+            card_divider.appendChild(card_name)
+          }
+          let card_image = document.createElement('img')
+          card_image.src = beerPhotos
+          card_image.className = "card-image"
+          card.appendChild(card_image)
+          let card_section = document.createElement('div')
+          card_section.className = "card-section"
+          card_section.id = "card-body"
+          card.appendChild(card_section)
+          if(brewery_distance !== null && brewery_distance !== "" && brewery_distance !== NaN){
+            let card_distance = document.createElement('p')
+            card_distance.id = "brewery-distance-" + i
+            card_section.appendChild(card_distance)
+            $("#brewery-distance-" + i).html("Distance: " + "<span>" + Number(brewery_distance).toFixed(1) + " miles" + "</span>");}
+          if(response_array.phone !== null && response_array.phone !== "" && response_array.phone !== "null"){
+            var phone_number = response_array.phone.replace(/(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)/, '$1$2$3-$4$5$6-$7$8$9$10')
+            let card_phone_number = document.createElement('p')
+            card_phone_number.id = "brewery-phone-number-" + i
+            card_section.appendChild(card_phone_number)
+            $("#brewery-phone-number-" + i).html("Phone #: " + "<span>" + phone_number + "</span>")
+          if (response_array.street !== null && response_array.street !== ""){
+            let card_address = document.createElement('p')
+            card_address.id = "brewery-address-" + i
+            card_section.appendChild(card_address)
+            $("#brewery-address-" + i).html("Distance: " + "<span>" + response_array.street + " " + response_array.city + " " + response_array.state + "</span>");}
+          if (response_array.website_url !== null && response_array.website_url !== ""){
+            let card_website = document.createElement('a')
+            card_website.id = "brewery-add-website-" + i
+            card_section.appendChild(card_website)
+            $("#brewery-add-website-" + i).html("href=" + response_array.website_url + ">" + "Website")
+            $("#brewery-add-website-" + i).html("Website").attr("href", response_array.website_url)
+          };
+          $('#cell-' + i + "div:has(span:empty,src:empty,href:empty,a:empty,p:empty)").remove();
+        }
+      }
+    }
+  } 
+
+function resize_columns(array_length){
+  let small, medium, large;
+  if(array_length == 1) {
+    small=1,medium=1,large=1
+  } else if (array_length == 2){
+    small=1,medium=2,large=2
+  } else if (array_length == 3){
+    small=2, medium=3,large=3
+  } else if (array_length == 4){
+    small=2, medium=2, large=2
+  } else if (array_length == 5){
+    small=2, medium=3, large=3
+  } else if (array_length == 6){
+    small=2, medium=3,large=3
+  } else if (array_length >= 7){
+    small=2, medium=3, large=4
+  }
+  return [small,medium,large]
+}
+
+load_initial_search_history();
+
 function save_data(){
   //save card data to local storage
   for (var i = 0; i < breweryDistance.length; i++){
@@ -171,6 +289,4 @@ function save_data(){
 }
 
 function load_search_history(){
-  
 }
-
