@@ -1,10 +1,8 @@
-var user_zip_code; 
-var ip_bool = "False" 
+
 //attempt geolocation 
 function getLocation() {
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(GetZipCode);
-		ip_bool = "True"
 	}
 }
 
@@ -16,10 +14,10 @@ function GetZipCode() {
 				return;
 			   }, 3000);
 			   
-			user_zip_code = e.zip_code 
+			localStorage.setItem("user_zipcode", String(e.zip_code ))
 			localStorage.setItem("ip_latitude", String(e.latitude))
 			localStorage.setItem("ip_longitude", String(e.longitude))
-			$('#zipcode').val(user_zip_code)
+			$('#zipcode').val(e.zip_code)
 		  });
 	};
 
