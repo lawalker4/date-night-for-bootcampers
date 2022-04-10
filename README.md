@@ -2,19 +2,21 @@
 
 Project 1 (Group Project)- 
 
-This is an application that can have the clients pick a brewery and get directions to their favorite spot. The users will also have the ability to save their results to their local storage.  
+This is an application that can have the clients pick a brewery and get directions to the brewy of their choice. They will also have the abilit to save their search results to their local storage. 
 
 # Purpose of application:
 
 The user can access the website to look up a great brewery for the area. 
 This website will allow them to find a brewery and location, pick the perfect date spot and how to get there! 
+
 Our users will love this website and the features they will have at their fingertips. 
 
 
 # Technology used:
 
-APIs used: FreeGeoIpAPI, Open Brewery DB, TheZipCodes, 
-CSS used: Foundation
+* APIs used: FreeGeoIpAPI, Open Brewery DB, TheZipCodes
+
+* CSS used: Foundation
 
 # Deployment
 
@@ -30,5 +32,6 @@ To run locally:
  3. The user will be able to save their results to their local storage.
 
 # Authors
-Jefferson, Daniel and Ashley
-
+* Daniel @DanielLiszka
+* Jefferson @Jefid
+* Ashley @lawalker4
