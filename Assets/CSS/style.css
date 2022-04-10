@@ -88,14 +88,34 @@ a:hover {
   padding-bottom: 1rem;
 }
 
+#greeting-header {
+  text-align: center;
+}
+
+#result-card h3 {
+  text-align: center;
+  font-weight: bold;
+}
+
 #result-card p{
   text-align: left;
-}
-#result-card p, h3{
-    font-weight: bold;
+  font-weight: bold;
 }
 
 #result-card span{
+  font-weight: 300;
+}
+
+#grid_x h3 {
+  text-align: center;
+}
+
+#grid_x p {
+  text-align: left;
+  font-weight: bold;
+}
+
+#grid_x span{
   font-weight: 300;
 }
 
@@ -130,3 +150,20 @@ a:hover {
   background-color: var(--secondary);
 }
 
+@media screen and (max-device-width: 720px){
+  body {
+      font-size: 18px;
+  }
+}
+
+@media screen and (max-device-width: 640px){
+  body {
+      font-size: 16px;
+  }
+}
+
+@media screen and (max-device-width: 320px){
+  body {
+      font-size: 12px;
+  }
+}

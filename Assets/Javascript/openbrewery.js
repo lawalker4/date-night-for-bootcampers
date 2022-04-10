@@ -37,6 +37,7 @@ $("#submit-button").on("click", function() {
 
   $.ajax({
     url:queryUrl,
+    method:"GET",
 }).then(function(response) {
   //remove old result
   if(document.getElementById("result-card") !== null){
