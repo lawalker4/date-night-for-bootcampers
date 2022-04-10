@@ -71,39 +71,13 @@ a:hover {
   font-weight: 300;
 }
 
-.modal-list img{
+#result-card img{
   padding-top: 3rem;
   padding-bottom: 3rem;
   width:auto;
   height:auto;
-  max-width: 70rem;
-  max-height: 70rem;
-}
-
-.close {
-  float: left;
-  font-size: 24px;
-  font-weight: bold;
-}
-.close:hover,
-.close:focus {
-  cursor:pointer;
-}
-
-.modal-list h3 {
-    font-size: 36px;
-    color: darkblue;
-    text-align: center;
-    border-bottom: 1px solid black;
-    padding-bottom: 3%;
-    padding-top: 15px;
-}
-
-.modal-list h2 {
-  font-size: 26;
-  text-align: center;
-  font-weight: bold;
-  border-style: 1px solid black;
+  max-width: 40rem;
+  max-height: 40rem;
 }
 
 .equal-height-cards cell {
