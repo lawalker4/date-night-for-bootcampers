@@ -1,6 +1,5 @@
-var modal = document.getElementById("brewery-display");
 var btn = document.getElementById("submit-button");
-var span = document.getElementById("close");
+var reset = document.getElementById("reset-button");
 var result_card = document.querySelector("#grid-container-1")
 var zip_code_latitude;
 var zip_code_longitude;
@@ -8,6 +7,24 @@ var latitude;
 var longitude;
 var img_random_num_array = [];
 var img_random_num
+result_storage = (localStorage.getItem("result_storage"))
+result_storage = (result_storage) ? JSON.parse(result_storage) : [];
+console.log(result_storage)
+
+//clear everything except IP coordinates 
+reset.addEventListener("click",function(){
+  //change icon color when clicked
+  reset.style.color = "brown"
+  latitude = localStorage.getItem("ip_latitude")
+  longitude = localStorage.getItem("ip_longitude")
+  localStorage.clear();
+  localStorage.setItem("ip_latitude", latitude)
+  localStorage.setItem("ip_longitude", longitude)
+  $('#grid-container-2').remove();
+  setTimeout(function(){ 
+    reset.style.color = "black"
+  },400)
+})
 
 $("#submit-button").on("click", function() {
  event.preventDefault();
@@ -34,7 +51,8 @@ $("#submit-button").on("click", function() {
 }).then(function(response) {
   //remove old result
   if(document.getElementById("result-card") !== null){
-  $('#result-card').remove();}
+  $('#result-card').remove();
+}
   //fill html elements inside the modal with response data.
       //try to pick random brewery within 30 miles else pick closest.
       var i = 0;
@@ -95,7 +113,7 @@ $("#submit-button").on("click", function() {
       card_section.className = "card-section"
       card_section.id = "card-body"
       card.appendChild(card_section)
-      if(brewery_distance !== null && brewery_distance !== ""){
+      if(brewery_distance !== null && brewery_distance !== "" && brewery_distance !== NaN){
         let card_distance = document.createElement('p')
         card_distance.id = "brewery-distance"
         card_section.appendChild(card_distance)
@@ -117,10 +135,13 @@ $("#submit-button").on("click", function() {
         let card_website = document.createElement('a')
         card_website.id = "brewery-add-website"
         card_section.appendChild(card_website)
-        $("#brewery-add-website").html(" href=" + response_array.website_url + ">" + "Website")
+        $("#brewery-add-website").html("href=" + response_array.website_url + ">" + "Website")
         $("#brewery-add-website").html("Website").attr("href", response_array.website_url);}
-      //hide empty html content if missing api data. 
+        //hide empty html content if missing api data. 
       $('#result-card div:has(span:empty,src:empty,href:empty,a:empty,p:empty)').remove(); 
+      //store response data for later use 
+      result_storage.push(response_array)
+      localStorage.setItem("result_storage",JSON.stringify(result_storage))
       }});
    },1200)});
 
@@ -142,6 +163,7 @@ function save_data(){
   //save card data to local storage
 }
 
-$(function(){
-  //load search history on page load from local storage 
-})
+function load_search_history(){
+  
+}
+
