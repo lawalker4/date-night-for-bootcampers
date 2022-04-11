@@ -291,6 +291,8 @@ function load_initial_search_history(){
       },400)
     })
 
+
+    
     for (var i = 0; (i < search_history_length && i < result_storage.length); i++) {
           var response_array = [];
           var response_array = result_storage[(result_storage.length -1) -i]
