@@ -1,7 +1,7 @@
 var btn = document.getElementById("submit-button");
 var result_card = document.querySelector("#grid-container-1")
 var container = document.getElementsByClassName("container")[0]
-var main_body = document.getElementsByTagName("body")[0];
+var main_body = document.getElementsByTagName("main")[0];
 var zip_code_latitude;
 var zip_code_longitude;
 var latitude;
@@ -23,7 +23,7 @@ $("#submit-button").on("click", function() {
   longitude = parseFloat(localStorage.getItem("ip_longitude"))
   user_zip_code = parseInt(localStorage.getItem("user_zipcode"))
   if (user_zip_code != zipCode){
-    $.get("https://thezipcodes.com/api/v1/search?zipCode=" + zipCode + "&apiKey=9f8032d8d5319e78db906f46c3803340"
+    $.ajax("https://thezipcodes.com/api/v1/search?zipCode=" + zipCode + "&apiKey=9f8032d8d5319e78db906f46c3803340"
     ).then(function(e) {
     for (var i = 0; i < e.location.length; i++){
       if(e.location[i].country == "US" || e.location[i].countryCode3 == "USA"){
@@ -31,19 +31,19 @@ $("#submit-button").on("click", function() {
         longitude = e.location[i].longitude
       }}
 	})}
-  //wait 1.2 seconds to get coordinates before proceeding.
+  //wait 1.2 seconds to get coordinates before proceeding. 
   setTimeout(function(){ 
   var queryUrl = "https://api.openbrewerydb.org/breweries?by_dist=" + latitude +"," + longitude
-
   $.ajax({
     url:queryUrl,
+    method:"GET",
 }).then(function(response) {
   //remove old result
   if(document.getElementById("result-card") !== null){
   $('#result-card').remove();
 }
   //fill html elements inside the modal with response data.
-      //try to pick random brewery within 30 miles else pick closest.
+      //try to pick random brewery within 30 miles
       var i = 0;
       do{ 
         var random_num = Math.floor(Math.random() * response.length);
@@ -54,7 +54,8 @@ $("#submit-button").on("click", function() {
         i ++;
     }} while (brewery_distance > 30 && i < 20)
       if (brewery_distance > 30) {
-        response_array = response[0]
+        var random_num = Math.floor(Math.random() * response.length);
+        response_array = response[random_num]
         var brewery_distance = distance(parseFloat(localStorage.getItem("ip_latitude")),parseFloat(localStorage.getItem("ip_longitude")),response_array.latitude,response_array.longitude);
       }
       console.log(response_array)
@@ -88,20 +89,42 @@ $("#submit-button").on("click", function() {
         "./assets/img/brewery-photos/brewery-10.jpg", "./assets/img/brewery-photos/brewery-12.jpg", "./assets/img/brewery-photos/brewery-13.jpg", "./assets/img/brewery-photos/brewery-14.jpg",
         "./assets/img/brewery-photos/brewery-15.jpg",  "./assets/img/brewery-photos/brewery-16.jpg", "./assets/img/brewery-photos/brewery-17.jpg", "./assets/img/brewery-photos/brewery-18.jpg", 
         "./assets/img/brewery-photos/brewery-19.jpg", "./assets/img/brewery-photos/brewery-20.jpg", "./assets/img/brewery-photos/brewery-21.jpg", "./assets/img/brewery-photos/brewery-22.jpg", 
+        "./assets/img/brewery-photos/brewery-23.jpg", "./assets/img/brewery-photos/brewery-24.jpg", "./assets/img/brewery-photos/brewery-25.jpg", "./assets/img/brewery-photos/brewery-26.jpg",
+        "./assets/img/brewery-photos/brewery-27.jpg", "./assets/img/brewery-photos/brewery-28.jpg", "./assets/img/brewery-photos/brewery-29.jpg", "./assets/img/brewery-photos/brewery-30.jpg",
       ]
       //try to prevent subsequent results from getting the same random image.
       var i = 0;
       do {
       img_random_num = Math.floor(Math.random() * beerPhotos.length);
       i++;
-      } while (img_random_num_array.includes(img_random_num) && i < 22)
-      if (img_random_num_array.length == 23){ img_random_num_array = []};
+      } while (img_random_num_array.includes(img_random_num) && i < beerPhotos.length)
+      if (img_random_num_array.length == beerPhotos.length){ img_random_num_array = []};
+      var temp_result_storage = localStorage.getItem("result_storage")
+      var temp_container = [];
+      var beerPhotos_src = beerPhotos[img_random_num]
+      //make sure the same brewery name is assigned the same image.
+      if (temp_result_storage && beerPhotos.length > 1) {
+      temp_container = JSON.parse(temp_result_storage)
+      other_temp_container = [];
+      for (var i = 0; i < temp_container.length; i++){
+        var other_temp_container = temp_container[i][2]
+        if (other_temp_container.name == response_array.name){
+          beerPhotos_src = temp_container[i][0]
+          break }
+        }
+      }
+      //store response data for later use 
+      modified_response_array = [];
+      modified_response_array.push(beerPhotos_src)
+      modified_response_array.push(brewery_distance)
+      modified_response_array.push(response_array)
+      result_storage.push(modified_response_array)
 
       img_random_num_array.push(img_random_num)
       localStorage.setItem("img_random_num_array", JSON.stringify(img_random_num_array))
 
       let card_image = document.createElement('img')
-      card_image.src = beerPhotos[img_random_num]
+      card_image.src = beerPhotos_src
       card_image.className = "card-image"
       card.appendChild(card_image)
       let card_section = document.createElement('div')
@@ -134,12 +157,6 @@ $("#submit-button").on("click", function() {
         $("#brewery-add-website").html("Website").attr("href", response_array.website_url);}
         //hide empty html content if missing api data. 
       $('#result-card div:has(span:empty,src:empty,href:empty,a:empty,p:empty)').remove(); 
-      //store response data for later use 
-      modified_response_array = [];
-      modified_response_array.push(beerPhotos[img_random_num])
-      modified_response_array.push(brewery_distance)
-      modified_response_array.push(response_array)
-      result_storage.push(modified_response_array)
       localStorage.setItem("result_storage",JSON.stringify(result_storage))
       modify_search_history();
       }});
@@ -177,7 +194,29 @@ function modify_search_history(){
     grid_x.id = "grid_x"
     grid_x.className = "grid-x medium" + " small-up-" + 1 + " medium-up-" + 1 + " large-up-" + 1 + " grid-padding-x medium-unstack equal-height-cards text-left"
     grid_container_2.appendChild(grid_x)
+
+    //remove all local storage except user zipcode and ip coordinates.
+    var reset = document.getElementById("reset-button");
+    reset.addEventListener("click",function(){
+      //change icon color when clicked
+      reset.style.color = "brown"
+      latitude = localStorage.getItem("ip_latitude")
+      longitude = localStorage.getItem("ip_longitude")
+      user_zip_code = localStorage.getItem("user_zipcode")
+      $('#grid-container-2').remove();
+      result_storage = [];
+      //img_random_num_array = [];
+      window.localStorage.clear();
+      localStorage.setItem("ip_latitude", latitude)
+      localStorage.setItem("ip_longitude", longitude)
+      localStorage.setItem("user_zipcode", user_zip_code)
+      $('#result-card').remove();
+      setTimeout(function(){ 
+        reset.style.color = "black"
+      },400)
+    })
   }
+
   //remove oldest search result if > search_history_length.
   if (result_storage_temp.length > search_history_length) {
     var id = $('#grid_x').children().last().attr('id');
@@ -282,10 +321,12 @@ function load_initial_search_history(){
       user_zip_code = localStorage.getItem("user_zipcode")
       $('#grid-container-2').remove();
       result_storage = [];
+      //img_random_num_array = [];
       window.localStorage.clear();
       localStorage.setItem("ip_latitude", latitude)
       localStorage.setItem("ip_longitude", longitude)
       localStorage.setItem("user_zipcode", user_zip_code)
+      $('#result-card').remove();
       setTimeout(function(){ 
         reset.style.color = "black"
       },400)
@@ -378,13 +419,4 @@ function resize_columns(array_length){
 }
 
 load_initial_search_history();
-
-function search(nameKey, myArray){
-  for (var i=0; i < myArray.length; i++) {
-      if (myArray[i].name === nameKey) {
-          return myArray[i];
-      }
-  }
-}
-
 
