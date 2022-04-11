@@ -113,7 +113,7 @@ div {
   }
 
   footer p {
-    position: fixed;
+    /* position: fixed; */
     background-color: var(--primary);
     bottom: 0;
     left: 0;
