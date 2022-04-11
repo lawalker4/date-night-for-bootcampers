@@ -97,8 +97,8 @@ $("#submit-button").on("click", function() {
       do {
       img_random_num = Math.floor(Math.random() * beerPhotos.length);
       i++;
-      } while (img_random_num_array.includes(img_random_num) && i < 22)
-      if (img_random_num_array.length == 23){ img_random_num_array = []};
+      } while (img_random_num_array.includes(img_random_num) && i < beerPhotos.length)
+      if (img_random_num_array.length == beerPhotos.length){ img_random_num_array = []};
       var temp_result_storage = localStorage.getItem("result_storage")
       var temp_container = [];
       var beerPhotos_src = beerPhotos[img_random_num]
@@ -205,17 +205,18 @@ function modify_search_history(){
       user_zip_code = localStorage.getItem("user_zipcode")
       $('#grid-container-2').remove();
       result_storage = [];
-      img_random_num_array = [];
+      //img_random_num_array = [];
       window.localStorage.clear();
       localStorage.setItem("ip_latitude", latitude)
       localStorage.setItem("ip_longitude", longitude)
       localStorage.setItem("user_zipcode", user_zip_code)
-      document.location.reload();
+      $('#result-card').remove();
       setTimeout(function(){ 
         reset.style.color = "black"
       },400)
     })
   }
+
   //remove oldest search result if > search_history_length.
   if (result_storage_temp.length > search_history_length) {
     var id = $('#grid_x').children().last().attr('id');
@@ -320,12 +321,12 @@ function load_initial_search_history(){
       user_zip_code = localStorage.getItem("user_zipcode")
       $('#grid-container-2').remove();
       result_storage = [];
-      img_random_num_array = [];
+      //img_random_num_array = [];
       window.localStorage.clear();
       localStorage.setItem("ip_latitude", latitude)
       localStorage.setItem("ip_longitude", longitude)
       localStorage.setItem("user_zipcode", user_zip_code)
-      document.location.reload();
+      $('#result-card').remove();
       setTimeout(function(){ 
         reset.style.color = "black"
       },400)
