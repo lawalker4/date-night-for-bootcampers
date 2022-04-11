@@ -411,7 +411,7 @@ function resize_columns(array_length){
   } else if (array_length == 6){
     small=1, medium=2,large=3
   } else if (array_length >= 7){
-    small=1, medium=3, large=3
+    small=1, medium=2, large=3
   }
   return [small,medium,large]
 }
