@@ -31,10 +31,9 @@ $("#submit-button").on("click", function() {
         longitude = e.location[i].longitude
       }}
 	})}
-  //wait 1.2 seconds to get coordinates before proceeding.
+  //wait 1.2 seconds to get coordinates before proceeding. 
   setTimeout(function(){ 
   var queryUrl = "https://api.openbrewerydb.org/breweries?by_dist=" + latitude +"," + longitude
-
   $.ajax({
     url:queryUrl,
     method:"GET",
@@ -90,6 +89,8 @@ $("#submit-button").on("click", function() {
         "./assets/img/brewery-photos/brewery-10.jpg", "./assets/img/brewery-photos/brewery-12.jpg", "./assets/img/brewery-photos/brewery-13.jpg", "./assets/img/brewery-photos/brewery-14.jpg",
         "./assets/img/brewery-photos/brewery-15.jpg",  "./assets/img/brewery-photos/brewery-16.jpg", "./assets/img/brewery-photos/brewery-17.jpg", "./assets/img/brewery-photos/brewery-18.jpg", 
         "./assets/img/brewery-photos/brewery-19.jpg", "./assets/img/brewery-photos/brewery-20.jpg", "./assets/img/brewery-photos/brewery-21.jpg", "./assets/img/brewery-photos/brewery-22.jpg", 
+        "./assets/img/brewery-photos/brewery-23.jpg", "./assets/img/brewery-photos/brewery-24.jpg", "./assets/img/brewery-photos/brewery-25.jpg", "./assets/img/brewery-photos/brewery-26.jpg",
+        "./assets/img/brewery-photos/brewery-27.jpg", "./assets/img/brewery-photos/brewery-28.jpg", "./assets/img/brewery-photos/brewery-29.jpg", "./assets/img/brewery-photos/brewery-30.jpg",
       ]
       //try to prevent subsequent results from getting the same random image.
       var i = 0;
