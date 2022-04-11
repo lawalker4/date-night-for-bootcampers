@@ -23,7 +23,7 @@ $("#submit-button").on("click", function() {
   longitude = parseFloat(localStorage.getItem("ip_longitude"))
   user_zip_code = parseInt(localStorage.getItem("user_zipcode"))
   if (user_zip_code != zipCode){
-    $.get("https://thezipcodes.com/api/v1/search?zipCode=" + zipCode + "&apiKey=9f8032d8d5319e78db906f46c3803340"
+    $.ajax("https://thezipcodes.com/api/v1/search?zipCode=" + zipCode + "&apiKey=9f8032d8d5319e78db906f46c3803340"
     ).then(function(e) {
     for (var i = 0; i < e.location.length; i++){
       if(e.location[i].country == "US" || e.location[i].countryCode3 == "USA"){
@@ -44,7 +44,7 @@ $("#submit-button").on("click", function() {
   $('#result-card').remove();
 }
   //fill html elements inside the modal with response data.
-      //try to pick random brewery within 30 miles else pick closest.
+      //try to pick random brewery within 30 miles
       var i = 0;
       do{ 
         var random_num = Math.floor(Math.random() * response.length);
@@ -55,7 +55,8 @@ $("#submit-button").on("click", function() {
         i ++;
     }} while (brewery_distance > 30 && i < 20)
       if (brewery_distance > 30) {
-        response_array = response[0]
+        var random_num = Math.floor(Math.random() * response.length);
+        response_array = response[random_num]
         var brewery_distance = distance(parseFloat(localStorage.getItem("ip_latitude")),parseFloat(localStorage.getItem("ip_longitude")),response_array.latitude,response_array.longitude);
       }
       console.log(response_array)
