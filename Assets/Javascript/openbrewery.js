@@ -208,6 +208,7 @@ function modify_search_history(){
       localStorage.setItem("ip_latitude", latitude)
       localStorage.setItem("ip_longitude", longitude)
       localStorage.setItem("user_zipcode", user_zip_code)
+      document.location.reload();
       setTimeout(function(){ 
         reset.style.color = "black"
       },400)
@@ -322,6 +323,7 @@ function load_initial_search_history(){
       localStorage.setItem("ip_latitude", latitude)
       localStorage.setItem("ip_longitude", longitude)
       localStorage.setItem("user_zipcode", user_zip_code)
+      document.location.reload();
       setTimeout(function(){ 
         reset.style.color = "black"
       },400)
