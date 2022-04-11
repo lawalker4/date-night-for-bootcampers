@@ -11,7 +11,7 @@ header h1{
 }
 
 a {
-  color: darkorange
+  color: darkorange;
 }
 
 a:hover {
@@ -124,8 +124,8 @@ a:hover {
   padding-bottom: 0.5rem;
   width:auto;
   height:auto;
-  max-width: 35rem;
-  max-height: 30rem;
+  max-width: 40rem;
+  max-height: 35rem;
 }
 
 #card-image {
