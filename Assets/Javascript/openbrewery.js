@@ -13,7 +13,7 @@ result_storage = (localStorage.getItem("result_storage"))
 result_storage = (result_storage) ? JSON.parse(result_storage) : [];
 console.log(result_storage)
 //global parameters 
-var search_history_length = 8;
+var search_history_length = 6;
 
 $("#submit-button").on("click", function() {
  event.preventDefault();
@@ -413,7 +413,7 @@ function resize_columns(array_length){
   } else if (array_length == 6){
     small=2, medium=3,large=3
   } else if (array_length >= 7){
-    small=2, medium=3, large=4
+    small=2, medium=3, large=3
   }
   return [small,medium,large]
 }
