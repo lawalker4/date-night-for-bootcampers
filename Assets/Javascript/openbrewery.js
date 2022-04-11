@@ -403,15 +403,15 @@ function resize_columns(array_length){
   } else if (array_length == 2){
     small=1,medium=2,large=2
   } else if (array_length == 3){
-    small=2, medium=3,large=3
+    small=1, medium=2,large=3
   } else if (array_length == 4){
-    small=2, medium=2, large=2
+    small=1, medium=2, large=2
   } else if (array_length == 5){
-    small=2, medium=3, large=3
+    small=1, medium=2, large=3
   } else if (array_length == 6){
-    small=2, medium=3,large=3
+    small=1, medium=2,large=3
   } else if (array_length >= 7){
-    small=2, medium=3, large=3
+    small=1, medium=2, large=3
   }
   return [small,medium,large]
 }
