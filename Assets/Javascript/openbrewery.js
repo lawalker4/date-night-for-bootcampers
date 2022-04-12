@@ -102,14 +102,14 @@ $("#submit-button").on("click", function() {
       //generic brewery photos are used as content filler. obtained from "unsplash.com"
       var beerPhotos = [];
       beerPhotos = [
-        "./assets/img/brewery-photos/brewery-0.jpg","./assets/img/brewery-photos/brewery-1.jpg", "./assets/img/brewery-photos/brewery-2.jpg", "./assets/img/brewery-photos/brewery-3.jpg",
-        "./assets/img/brewery-photos/brewery-4.jpg", "./assets/img/brewery-photos/brewery-5.jpg", "./assets/img/brewery-photos/brewery-6.jpg",
-        "./assets/img/brewery-photos/brewery-7.jpg", "./assets/img/brewery-photos/brewery-8.jpg", "./assets/img/brewery-photos/brewery-9.jpg",
-        "./assets/img/brewery-photos/brewery-10.jpg", "./assets/img/brewery-photos/brewery-12.jpg", "./assets/img/brewery-photos/brewery-13.jpg", "./assets/img/brewery-photos/brewery-14.jpg",
-        "./assets/img/brewery-photos/brewery-15.jpg",  "./assets/img/brewery-photos/brewery-16.jpg", "./assets/img/brewery-photos/brewery-17.jpg", "./assets/img/brewery-photos/brewery-18.jpg", 
-        "./assets/img/brewery-photos/brewery-19.jpg", "./assets/img/brewery-photos/brewery-20.jpg", "./assets/img/brewery-photos/brewery-21.jpg", "./assets/img/brewery-photos/brewery-22.jpg", 
-        "./assets/img/brewery-photos/brewery-23.jpg", "./assets/img/brewery-photos/brewery-24.jpg", "./assets/img/brewery-photos/brewery-25.jpg", "./assets/img/brewery-photos/brewery-26.jpg",
-        "./assets/img/brewery-photos/brewery-27.jpg", "./assets/img/brewery-photos/brewery-28.jpg", "./assets/img/brewery-photos/brewery-29.jpg", "./assets/img/brewery-photos/brewery-30.jpg",
+        "./Assets/img/brewery-photos/brewery-0.jpg","./Assets/img/brewery-photos/brewery-1.jpg", "./Assets/img/brewery-photos/brewery-2.jpg", "./Assets/img/brewery-photos/brewery-3.jpg",
+        "./Assets/img/brewery-photos/brewery-4.jpg", "./Assets/img/brewery-photos/brewery-5.jpg", "./Assets/img/brewery-photos/brewery-6.jpg",
+        "./Assets/img/brewery-photos/brewery-7.jpg", "./Assets/img/brewery-photos/brewery-8.jpg", "./Assets/img/brewery-photos/brewery-9.jpg",
+        "./Assets/img/brewery-photos/brewery-10.jpg", "./Assets/img/brewery-photos/brewery-12.jpg", "./Assets/img/brewery-photos/brewery-13.jpg", "./Assets/img/brewery-photos/brewery-14.jpg",
+        "./Assets/img/brewery-photos/brewery-15.jpg",  "./Assets/img/brewery-photos/brewery-16.jpg", "./Assets/img/brewery-photos/brewery-17.jpg", "./Assets/img/brewery-photos/brewery-18.jpg", 
+        "./Assets/img/brewery-photos/brewery-19.jpg", "./Assets/img/brewery-photos/brewery-20.jpg", "./Assets/img/brewery-photos/brewery-21.jpg", "./Assets/img/brewery-photos/brewery-22.jpg", 
+        "./Assets/img/brewery-photos/brewery-23.jpg", "./Assets/img/brewery-photos/brewery-24.jpg", "./Assets/img/brewery-photos/brewery-25.jpg", "./Assets/img/brewery-photos/brewery-26.jpg",
+        "./Assets/img/brewery-photos/brewery-27.jpg", "./Assets/img/brewery-photos/brewery-28.jpg", "./Assets/img/brewery-photos/brewery-29.jpg", "./Assets/img/brewery-photos/brewery-30.jpg",
       ]
       //try to prevent subsequent results from getting the same random image.
       var i = 0;
