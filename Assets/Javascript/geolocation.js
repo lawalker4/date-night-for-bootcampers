@@ -1,13 +1,6 @@
-
-//attempt geolocation 
-function getLocation() {
-	if (navigator.geolocation) {
-		navigator.geolocation.getCurrentPosition(GetZipCode);
-	}
-}
-
-//get geolocation data from IP address
+//automatically get geolocation data from IP address every refresh
 function GetZipCode() {
+		//limited to 15000 requests / hour
 		$.get("https://api.freegeoip.app/json/?apikey=f359b860-b76b-11ec-98a5-ef0834c39bc8", function(e){ 
 			setTimeout(function(){
 				//early exit if no response 
@@ -21,4 +14,4 @@ function GetZipCode() {
 		  });
 	};
 
-getLocation();
+GetZipCode();
