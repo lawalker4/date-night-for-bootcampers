@@ -24,7 +24,7 @@ Our users will love this website and the features they will have at their finger
 
 # Deployment
 
-Deployment link:
+Deployment link: https://lawalker4.github.io/date-night-for-bootcampers/
 
 To run locally:
  1. Clone down this repo
