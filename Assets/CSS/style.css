@@ -2,68 +2,168 @@
 body { 
   font-family: "Times New Roman", Times, serif;
   color: black;
+  margin-left:auto;
+  margin-right:auto;
+}
 
+header h1{
+  margin-top: 3rem;
+}
+
+a {
+  color: darkorange;
+}
+
+a:hover {
+  color: rgb(255, 81, 0);
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+#reset-button{
+  float:right;
+  line-height: 20px;
+  pointer-events: all;
+}
+.fa-spin-hover:hover {
+  -webkit-animation: fa-spin 2s infinite linear;
+  -moz-animation: fa-spin 2s infinite linear;
+  -o-animation: fa-spin 2s infinite linear;
+  animation: fa-spin 2s infinite linear;
+  cursor: pointer;
+  font-size:1.5rem;
+  transition: 0.5s ease-out;
 }
 
 #submit-button { 
   float: left; 
   margin-left: 20px; 
-  margin-top: 15px; 
-  border-radius: 25px;
-
-  
+  border-radius: 35px;
+  font-size: 16px;
 }
-
-form { 
-background-color: #ffff; 
-border-radius: 25px; 
-margin-top: 50px;
-margin-left: 50px;
-
-}
-
-
-.modal {
-  display: block; 
-  margin-top: 125px;
-  position: fixed; 
-  z-index: -99999;
-  padding-top: 0px; 
-  left: 0;
-  opacity: 0;
-  top: 0;
-  width: 80%;
-  height: 80%;
-  overflow: auto; 
-  background-color: #fefefe;
-}
-
-.modal-content {
-  background-color: #fefefe;
+.container {
+  width: 90vw;
   margin: auto;
-  width: 100%;
+  padding-top: 5rem ;
+  padding-bottom: 8rem;
 }
 
-.modal-list li{
-    font-size: 25px;
-    color: black;
-    padding-top: 25px;
+.container div {
+  padding: 5px;
 }
 
-.modal-list img{
-  padding-top: 30px;
+.grid-container{
+  background-color: white; 
+  border-radius: 20px;
 }
 
-#restaurant-name {
-    font-size: 40px;
-    color: darkblue;
-    text-align: center;
-    border-bottom: 1px solid #0000001c;
-    padding-bottom: 3%;
+#grid-container-1{
+  max-width: 50rem;
 }
 
-#map{
-  height:400px;
-  width: 100%;
+#grid-container-2{
+  grid-auto-rows: minmax(auto,300px);
+  max-width: 60rem;
 }
 
+/* 
+#grid-container-2{
+  padding-right:0rem;
+  padding-left:0rem;
+} 
+*/
+
+.grid_row{
+  margin:auto;
+}
+.grid-container h3{
+  padding-top: 5px;
+  font-size: 28px;
+}
+
+.grid-container label{
+  font-size: 18px;
+  font-weight: bold;
+  padding-right: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+#greeting-header {
+  text-align: center;
+}
+
+#result-card h3 {
+  text-align: center;
+  font-weight: bold;
+}
+
+#result-card p{
+  text-align: left;
+  font-weight: bold;
+}
+
+#result-card span{
+  font-weight: 300;
+}
+
+#grid_x h3 {
+  text-align: center;
+}
+
+#grid_x p {
+  text-align: left;
+  font-weight: bold;
+}
+
+#grid_x span{
+  font-weight: 300;
+}
+
+#result-card img{
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  width:auto;
+  height:auto;
+  max-width: 40rem;
+  max-height: 35rem;
+}
+
+#card-image {
+  width:auto;
+  height:auto;
+  max-width: 25rem;
+  max-height: 20rem;
+}
+
+.equal-height-cards cell {
+    display: flex;
+    align-items: stretch;
+}
+
+.card img{
+  height: 80%;
+  width: 80%;
+  background-color: var(--secondary);
+}
+
+.card-divider{
+  background-color: var(--secondary);
+}
+
+@media screen and (max-device-width: 720px){
+  body {
+      font-size: 18px;
+  }
+}
+
+@media screen and (max-device-width: 640px){
+  body {
+      font-size: 16px;
+  }
+}
+
+@media screen and (max-device-width: 320px){
+  body {
+      font-size: 12px;
+  }
+}

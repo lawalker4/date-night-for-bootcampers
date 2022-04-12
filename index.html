@@ -2,64 +2,61 @@
 <html lang="en-us">
   <head>
     <meta charset="UTF-8">
-      <title>Demo</title>
+      <title>Brews for Bootcampers</title>
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/css/foundation.min.css">
-      <link href="https://fonts.googleapis.com/css?family=Poppins:900" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
       <link rel="stylesheet" type="text/css" href="Assets/CSS/style.css">
+      <link rel="stylesheet" type="text/css" href="Assets/CSS/style2.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">  
-
+  <header>
+    <h1> Brews for Bootcampers! 
+      <img src="./Assets/img/title.png"> </img>
+    </h1>
+    
+  </header>
   </head>
   <body>
+    <main>
     <div class="container"> 
-      <div class="col">
-        <div class="row">
-            <div class="row info-input">  
-              <div class="medium-6 cell col">
-                <input id="zipcode" type="text" class="validate address-form" placeholder="Zipcode" required>
+      <div class="grid-container align-middle" id="grid-container-1">
+        <!-- Query will be made on coordinates from IP address or entered zip code-->
+        <div class="align-center-middle text-center margin-x" id="greeting-h3"> 
+          <h3>Enter Your Zip Code to Find a Local Brewery! </h3>
+        </div> 
+        <div class="grid-y tiny-grid-frame align-middle">
+          <div class="grid-x tiny-grid-frame align-center-middle text-center" id="grid_x_input">  
+              <div class="column column-block small-centered">
+                <label for ="zipcode" class="text-right">Zip Code: </label> 
               </div>
-              <div class="medium-6 cell col">
-                <input id="radius" type="number" min="1" max="25" value="15" class="validate address-form" placeholder="Radius in Miles" required>
+              <div class="column column-block small-centered">
+                <input id="zipcode" type="text" class="address-form" placeholder="Zipcode" required>
               </div>
-              <div class="col">
-              <a class="button" id="submit-button">submit</a>
+              <div class = "column column-block small-centered">
+                <a class="button radius" id="submit-button">search</a>
               </div>
             </div>
-          </form>
-        </div>
-      </div> 
-
-      <div class="modal" id="restaurant-display">
-        <div class="modal-content">
-          <button class="close-button" aria-label="Close alert" type="button" data-close>
-            <span id="close">&times;</span>
-          </button>
-          <ul class="modal-list col-md-6">
-            <h3 id="restaurant-name"></h3>
-            <li class="restaurant-information"> Address: <span id="address"> </span> </li> 
-            <li class="restaurant-information"> Distance: <span id="distance"></span></li>
-            <li class="restaurant-information"> Price Range ($-$$$$): <span id="price-range"></span></li>
-            <li class="restaurant-information"> Star Rating: <span id="star-rating"></span></li>
-            <li class="restaurant-information"> Phone #: <span id="phone-number"></span></li>
-            <li id="website"><a id="add-website" >Website</a></li>
-            <img id="website-image" src=""/>
-            </ul>
-            <div class="center" id="map"></div>
           </div>
-          <ul class="modal-list col-md-6">
-            <h3 id="event-name"></h3>
-            <li class=""> Info: <span id=""></span></li>
-          </ul> 
-            
         </div>
-      </div>
-
     </div>
-
-  <script src="https://maps.googleapis.com/maps/api/js?key=&libraries=places" type="text/javascript"></script>
-  <script src="	https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js" ></script>
-  <script src="Assets/Javascript/yelp.js"></script>
-  <script src="Assets/Javascript/google_maps.js"></script>
-
+  </div>
+</main>
+   <!--footer--> 
+   <footer>
+    <div class="foot-content">
+      <p>Built and maintained by:
+      <a target="_blank" href="http://github.com/DanielLiszka">@Daniel Liszka |</a>
+      <a target="_blank" href="http://github.com/Jefid">@Jefferson |</a>
+      <a target="_blank" href="https://github.com/lawalker">@Ashley Walker </a>
+      </p>
+      <p>Powered By:
+      <a target="_blank" href="https://www.openbrewerydb.org/faq">Open Brewery DB</a>
+      </p>  
+    </div>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js" ></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js" ></script>
+  <script src="Assets/Javascript/openbrewery.js"></script>
+  <script src="Assets/Javascript/geolocation.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
 
 </body>
