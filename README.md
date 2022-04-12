@@ -29,7 +29,7 @@ Deployment link:
 To run locally:
  1. Clone down this repo
 
- <img src="./assets/images/Screenshot.jpg"></img>
+ <img src="./assets/images/screenshot.jpg"></img>
 
 # Accessibility
 
