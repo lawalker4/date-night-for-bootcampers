@@ -22,17 +22,16 @@ $("#submit-button").on("click", function() {
   latitude = parseFloat(localStorage.getItem("ip_latitude"))
   longitude = parseFloat(localStorage.getItem("ip_longitude"))
   user_zip_code = parseInt(localStorage.getItem("user_zipcode"))
-  if (user_zip_code != zipCode){
-    $.ajax("https://thezipcodes.com/api/v1/search?zipCode=" + zipCode + "&apiKey=9f8032d8d5319e78db906f46c3803340"
-    ).then(function(e) {
-    for (var i = 0; i < e.location.length; i++){
-      if(e.location[i].country == "US" || e.location[i].countryCode3 == "USA"){
-        latitude = e.location[i].latitude
-        longitude = e.location[i].longitude
-      }}
-	})}
-  //wait 1.2 seconds to get coordinates before proceeding. 
-  setTimeout(function(){ 
+  var t;
+  if (user_zip_code != zipCode){t  = 0 } else { t  = 1};
+  $.ajax("https://thezipcodes.com/api/v1/search?zipCode=" + zipCode + "&apiKey=9f8032d8d5319e78db906f46c3803340", timeout = t
+  ).then(function(e) {
+  for (var i = 0; i < e.location.length; i++){
+    if(e.location[i].country == "US" || e.location[i].countryCode3 == "USA"){
+      latitude = e.location[i].latitude
+      longitude = e.location[i].longitude
+    }}
+
   var queryUrl = "https://api.openbrewerydb.org/breweries?by_dist=" + latitude +"," + longitude
   $.ajax({
     url:queryUrl,
@@ -148,7 +147,7 @@ $("#submit-button").on("click", function() {
         let card_address = document.createElement('p')
         card_address.id = "brewery-address"
         card_section.appendChild(card_address)
-        $("#brewery-address").html("Distance: " + "<span>" + response_array.street + " " + response_array.city + " " + response_array.state + "</span>");}
+        $("#brewery-address").html("Address: " + "<span>" + response_array.street + " " + response_array.city + " " + response_array.state + "</span>");}
       if (response_array.website_url !== null && response_array.website_url !== ""){
         let card_website = document.createElement('a')
         card_website.id = "brewery-add-website"
@@ -160,7 +159,7 @@ $("#submit-button").on("click", function() {
       localStorage.setItem("result_storage",JSON.stringify(result_storage))
       modify_search_history();
       }});
-   },1200)});
+   })});
 
 //stackoverflow snippet to find distance based on the haversine formula. 
 function distance(lat1, lon1, lat2, lon2) {
@@ -274,7 +273,7 @@ function modify_search_history(){
       let card_address = document.createElement('p')
       card_address.id = "brewery-address-" + temp_length
       card_section.appendChild(card_address)
-      $("#brewery-address-" + temp_length).html("Distance: " + "<span>" + response_array.street + " " + response_array.city + " " + response_array.state + "</span>");}
+      $("#brewery-address-" + temp_length).html("Address: " + "<span>" + response_array.street + " " + response_array.city + " " + response_array.state + "</span>");}
     if (response_array.website_url !== null && response_array.website_url !== ""){
       let card_website = document.createElement('a')
       card_website.id = "brewery-add-website-" + temp_length
@@ -384,7 +383,7 @@ function load_initial_search_history(){
             let card_address = document.createElement('p')
             card_address.id = "brewery-address-" + i
             card_section.appendChild(card_address)
-            $("#brewery-address-" + i).html("Distance: " + "<span>" + response_array.street + " " + response_array.city + " " + response_array.state + "</span>");}
+            $("#brewery-address-" + i).html("Address: " + "<span>" + response_array.street + " " + response_array.city + " " + response_array.state + "</span>");}
           if (response_array.website_url !== null && response_array.website_url !== ""){
             let card_website = document.createElement('a')
             card_website.id = "brewery-add-website-" + i
