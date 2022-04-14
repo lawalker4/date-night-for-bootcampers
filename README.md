@@ -12,7 +12,7 @@ This website will allow them to find a brewery and location, pick the perfect da
 Our users will love this website and the features they will have at their fingertips. 
 
 # Demo:
-<img src="./assets/img/mock-up.gif"></img>
+<img src="./Assets/img/mock-up.gif"></img>
 
 # Technology used:
 
